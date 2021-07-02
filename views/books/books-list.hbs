@@ -1,0 +1,37 @@
+<h1>Books list</h1>
+{{#each booksFromDB}}
+<div>
+    <a href="/books/{{_id}}">
+        {{title}}
+    </a>
+    <p>By: {{author.name}}</p>
+
+    {{!-- HTML only supports get or post methods --}}
+    <form action="/books/{{_id}}/delete" method="POST">
+        <button type="submit">Delete</button>
+    </form>
+
+    {{#if imageUrl}}
+    <img src={{imageUrl}} />
+    {{/if}}
+
+</div>
+<br><br>
+{{/each}}
+
+
+
+
+
+<script>
+    let forms = [...document.getElementsByTagName("form")];
+    forms.forEach((form) => {
+        form.addEventListener("submit", (event) => {
+            event.preventDefault();
+            let result = confirm("Are you sure you want to delete?");
+            if (result) {
+                form.submit();
+            }
+        });
+    });
+</script>
