@@ -11,10 +11,26 @@
 
 <body>
 {{{body}}}
-   {{!-- {{if user role writer}} --}}
-   <a href="/news">News</a>
-   <a href="/write">Write</a>
-   <a href="/profile">Profile</a>
+
+   <a href="/books">Book List</a>
+
+   {{#if loggedInUser}}
+   <a href="/user-profile">User Profile</a>
+   <a href="/create-book">Create Book</a>
+   <a href="/create-blogpost">Create Blogpost</a>
+   <a href="/blogposts">Blogposts List</a>
+
+   {{/if}}
+
+
+   <a href="/create-author">Create Author</a>
+   <a href="/signup">Sign Up</a>
+   
+   <a href="/users">Users</a>
+
+   {{#if loggedInUser}}
+   Welcome {{loggedInUser}}
+
 
    <form action="/logout" method="POST">
       <button type="submit">Logout</button>

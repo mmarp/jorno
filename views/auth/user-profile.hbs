@@ -1,0 +1,25 @@
+<h1>Profile</h1>
+
+<p>Username: {{username}}</p>
+<p>Email: {{email}}</p>
+<p>Role: {{role}}</p>
+
+{{#if imageUrl}}
+<img height="200" width="200" src={{imageUrl}} />
+{{/if}}
+
+
+
+{{#each interests}}
+
+<p>Interests:{{this}}</p>
+
+{{/each}}
+
+
+{{#if bio}}
+<p>Bio: {{bio}}</p>
+{{/if}}
+
+
+<a href="/auth/{{_id}}/edit">Edit profile</a>

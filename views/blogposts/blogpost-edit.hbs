@@ -1,0 +1,30 @@
+<h1>Edit blogpost</h1>
+
+<form action="/blogposts/{{blogpostToEdit._id}}/edit" method="POST">
+
+    <label>Author</label>
+    <input type="text" name="author" value="{{blogpostToEdit.author}}" />
+
+    <label>Title</label>
+    <input type="text" name="title" value="{{blogpostToEdit.title}}" />
+
+    <label>Description</label>
+    <textarea row="5" cols="30" name="description">{{blogpostToEdit.description}}</textarea>
+
+
+    <label>Date</label>
+    <input type="date" name="publishedAt" value="{{blogpostToEdit.publishedAt}}" />
+
+
+    <label>Content</label>
+    <textarea row="20" cols="100" name="content">{{blogpostToEdit.content}}</textarea>
+
+
+    <label>Keywords</label>
+    <input type="text" name="keywords" value="{{blogpostToEdit.keywords}}" />
+
+
+    <button type="submit">Update</button>
+
+</form>
+
