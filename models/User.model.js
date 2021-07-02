@@ -14,8 +14,11 @@ const userSchema = new Schema({
   email: {
     type: String,
   },
-  role: String, //Admin, Reader, Guest, Superuser
+  role: String, //Writter or Editor
   imageUrl: String,
+  location: String,
+  interests: Array,
+  bio: String,
 });
 
 const User = model("User", userSchema);
