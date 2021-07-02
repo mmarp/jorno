@@ -20,12 +20,13 @@ router.get('/signup', (req, res) => {
 
 
 
-router.post('/signup', fileUpload.single('image'), async (req, res) => {
+router.post('/signup', async (req, res) => {
+                // fileUpload.single('image')
 
-    let fileUrlOnCloudinary = ""; //like this, if there is an error the file won't break
-    if (req.file) {
-        fileUrlOnCloudinary = req.file.path;
-    }
+    // let fileUrlOnCloudinary = ""; //like this, if there is an error the file won't break
+    // if (req.file) {
+    //     fileUrlOnCloudinary = req.file.path;
+    // }
 
 
 
@@ -33,6 +34,7 @@ router.post('/signup', fileUpload.single('image'), async (req, res) => {
         username,
         email,
         password,
+        role,
     } = req.body;
 
     //check if username and password are filled in
@@ -70,8 +72,9 @@ router.post('/signup', fileUpload.single('image'), async (req, res) => {
     await User.create({
         username,
         email,
-        password: hashedPassword, //passing the hashed/encrypted password when creating a new object
-        imageUrl: fileUrlOnCloudinary,
+        password: hashedPassword,
+        role, //passing the hashed/encrypted password when creating a new object
+        // imageUrl: fileUrlOnCloudinary,
     });
     res.redirect('/');
 });

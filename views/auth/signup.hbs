@@ -1,5 +1,6 @@
 <h2>Signup</h2>
-<form action="/signup" method="POST" enctype="multipart/form-data">
+<form action="/signup" method="POST">
+{{!-- enctype="multipart/form-data" --}}
 
 <label>Username</label>
 <input type="text" name="username" />
@@ -10,8 +11,12 @@
 <label>Password</label>
 <input type="password" name="password" />
 
-<label>Image</label>
-<input type="file" name="image" />
+{{!-- <label>Image</label>
+<input type="file" name="image" /> --}}
+
+Writer <input type="radio" name="role" value="writer" checked="true">
+Editor <input type="radio" name="role" value="editor">
+
 
 
 <button type="submit">Create account</button>
@@ -22,6 +27,11 @@
 
 
 
+
+
 {{#if errorMessage}}
 <p>{{errorMessage}}</p>
 {{/if}}
+<script>
+
+</script>
