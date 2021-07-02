@@ -7,39 +7,28 @@
    <meta http-equiv="X-UA-Compatible" content="ie=edge">
    <title>{{title}}</title>
    <link rel="stylesheet" href="/stylesheets/style.css" />
-
-
 </head>
 
 <body>
 {{{body}}}
-
-   <a href="/books">Book List</a>
-
-   {{#if loggedInUser}}
-   <a href="/create-book">Create Book</a>
-   {{/if}}
-
-
-   <a href="/create-author">Create Author</a>
-   <a href="/signup">Sign Up</a>
-   
-   <a href="/users">Users</a>
-
-   {{#if loggedInUser}}
-   Welcome {{loggedInUser}}
-
+   {{!-- {{if user role writer}} --}}
+   <a href="/news">News</a>
+   <a href="/write">Write</a>
+   <a href="/profile">Profile</a>
 
    <form action="/logout" method="POST">
       <button type="submit">Logout</button>
    </form>
-
+   {{!-- {{/else if user role editor}} --}}
    {{else}}
-   <a href="/login">Log in</a>
+   <a href="/news">News</a>
+   <a href="/find">Write</a>
+   <a href="/profile">Profile</a>
+
+   <form action="/logout" method="POST">
+      <button type="submit">Logout</button>
+   </form>
    {{/if}}
-
-
-   
 
    <script src="/js/script.js"></script>
 </body>
