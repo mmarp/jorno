@@ -178,19 +178,17 @@ router.get('/auth/:userId/edit', async (req, res) => {
 
 router.post('/auth/:userId/edit', async (req, res) => {
     const {
-        imageUrl,
         location,
         interests,
         bio,
     } = req.body;
     await User.findByIdAndUpdate(req.params.userId, {
-         imageUrl,
          location,
          interests,
          bio,
     });
     console.log(req.body);
-    res.redirect('/');
+    res.redirect('/user-profile');
 });
 
 
