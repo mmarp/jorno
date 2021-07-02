@@ -20,21 +20,28 @@ router.get('/signup', (req, res) => {
 
 
 
-router.post('/signup', async (req, res) => {
-                // fileUpload.single('image')
-
-    // let fileUrlOnCloudinary = ""; //like this, if there is an error the file won't break
-    // if (req.file) {
-    //     fileUrlOnCloudinary = req.file.path;
-    // }
 
 
+
+
+
+router.post('/signup', fileUpload.single('image'), async (req, res) => {
+    
+
+    let fileUrlOnCloudinary = ""; //like this, if there is an error the file won't break
+    if (req.file) {
+        fileUrlOnCloudinary = req.file.path;
+    }
 
     const {
         username,
         email,
         password,
         role,
+        imageUrl,
+        location,
+        interests,
+        bio,
     } = req.body;
 
     //check if username and password are filled in
@@ -74,10 +81,18 @@ router.post('/signup', async (req, res) => {
         email,
         password: hashedPassword,
         role, //passing the hashed/encrypted password when creating a new object
-        // imageUrl: fileUrlOnCloudinary,
+        imageUrl: fileUrlOnCloudinary,
+        location,
+        interests,
+        bio,
     });
-    res.redirect('/');
+    res.redirect('/login');
 });
+
+
+
+
+
 
 
 
@@ -86,6 +101,7 @@ router.post('/signup', async (req, res) => {
 router.get('/login', (req, res) => {
     res.render('auth/login');
 });
+
 
 router.post("/login", async (req, res) => {
     const {
@@ -120,7 +136,7 @@ router.post("/login", async (req, res) => {
         //     res.redirect('admin');
         // }
 
-        res.redirect('/');
+        res.redirect(`/auth/${user._id}`);
     } else {
         res.render("auth/login", {
             errorMessage: 'Invalid login',
@@ -130,9 +146,53 @@ router.post("/login", async (req, res) => {
 
 
 
+
+
+
+
 router.get('/users', async (req, res) => {
 const usersFromDB = await User.find();
     res.render('auth/users', {usersFromDB});
+});
+
+
+router.get('/auth/:userId', async (req, res) => {
+const userProfile = await User.findById(req.params.userId);
+res.render('auth/user-profile', userProfile);
+});
+
+
+
+
+
+
+router.get('/auth/:userId/edit', async (req, res) => {
+    const userToEdit = await User.findById(req.params.userId);
+
+    res.render('auth/user-edit', {
+        userToEdit,
+    });
+});
+
+
+router.post('/auth/:userId/edit', async (req, res) => {
+    
+    const {
+        imageUrl,
+        location,
+        interests,
+        bio,
+    } = req.body;
+    await User.findByIdAndUpdate(req.params.userId, {
+         imageUrl,
+         location,
+         interests,
+         bio,
+    });
+    console.log(req.body);
+    res.redirect('/');
+
+    
 });
 
 
@@ -145,10 +205,13 @@ const usersFromDB = await User.find();
 
 
 
-
-
-
-
+//User profile
+router.get('/user-profile', async (req, res) => {
+    const userProfile = await User.findById(req.session.currentUser._id);
+    res.render('auth/user-profile', 
+        userProfile
+    );
+});
 
 
 

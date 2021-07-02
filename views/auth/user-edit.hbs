@@ -1,0 +1,37 @@
+<h1>Edit Profile</h1>
+
+<p>Username: {{userToEdit.username}}</p>
+<p>Email: {{userToEdit.email}}</p>
+<p>Role: {{userToEdit.role}}</p>
+
+
+
+<form action="/auth/{{userToEdit._id}}/edit" method="POST" enctype="multipart/form-data">
+
+
+<label>Profile Picture</label>
+<input type="file" name="imageUrl" />
+{{!-- ask about different profile pictures --}}
+
+<label>Location</label>
+<input type="text" name="location" value="{{userToEdit.location}}" />
+
+
+<label>Interests</label>
+<input type="text" name="interests" value="{{userToEdit.interests}}" />
+
+
+
+<label>Bio</label>
+<input type="text" name="bio" value="{{userToEdit.bio}}" />
+
+
+
+
+
+
+<button type="submit">Update</button>
+
+</form>
+
+

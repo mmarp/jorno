@@ -19,4 +19,4 @@ const BlogPostsSchema = new Schema({
 
 
 
-module.exports = model('BlogPosts', BlogPostsSchema);
+module.exports = model('Blogposts', BlogPostsSchema);
