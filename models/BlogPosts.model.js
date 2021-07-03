@@ -11,6 +11,10 @@ const BlogPostsSchema = new Schema({
     publishedAt: Date,
     content: String,
     keywords: Array,
+    user: {
+        type: Schema.Types.ObjectId,
+        ref: "User",
+    }
 }, {
     timestamps: true,
 });

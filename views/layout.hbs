@@ -15,11 +15,11 @@
    <a href="/books">Book List</a>
 
    {{#if loggedInUser}}
-   <a href="/user-profile">User Profile</a>
+   <a href="/auth/{{loggedId}}">User Profile</a>
    <a href="/create-book">Create Book</a>
    <a href="/create-blogpost">Create Blogpost</a>
    <a href="/blogposts">Blogposts List</a>
-
+<a href="/news/{{loggedId}}/favorites">News favorites</a>
    {{/if}}
 
 

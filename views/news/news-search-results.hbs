@@ -1,0 +1,39 @@
+<h1>NEWS SEARCH RESULTS</h1>
+
+
+<form action="/news-search" method="GET">
+    {{!-- enctype multipart lets me insert images --}}
+
+    <label></label>
+    <input type="text" name="q" placeholder="search" />
+
+
+    <button type="submit">Search</button>
+
+</form>
+
+
+
+
+<ul>
+
+    {{#each articles}}
+
+    <a href="{{url}}" target="_blank">
+        {{title}}
+    </a>
+
+    <p>{{description}}</p>
+
+
+    <form action="/news/favorites/add" method="POST">
+        <input type="text" name="title" value="{{title}}" />
+        <input type="text" name="url" value="{{url}}" />
+        <button type="submit">Favorite 💟</button>
+
+    </form>
+
+
+    {{!-- <p>{{title}}</p> --}}
+    {{/each}}
+</ul>

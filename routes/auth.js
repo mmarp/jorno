@@ -38,7 +38,7 @@ router.post('/signup', fileUpload.single('image'), async (req, res) => {
         email,
         password,
         role,
-        imageUrl,
+        image,
         location,
         interests,
         bio,
@@ -86,6 +86,7 @@ router.post('/signup', fileUpload.single('image'), async (req, res) => {
         interests,
         bio,
     });
+    
     res.redirect('/login');
 });
 
@@ -168,7 +169,7 @@ res.render('auth/user-profile', userProfile);
 
 router.get('/auth/:userId/edit', async (req, res) => {
     const userToEdit = await User.findById(req.params.userId);
-
+    console.log(userToEdit);
     res.render('auth/user-edit', {
         userToEdit,
     });
@@ -176,23 +177,18 @@ router.get('/auth/:userId/edit', async (req, res) => {
 
 
 router.post('/auth/:userId/edit', async (req, res) => {
-    
     const {
-        imageUrl,
         location,
         interests,
         bio,
     } = req.body;
     await User.findByIdAndUpdate(req.params.userId, {
-         imageUrl,
          location,
          interests,
          bio,
     });
     console.log(req.body);
-    res.redirect('/');
-
-    
+    res.redirect('/user-profile');
 });
 
 
