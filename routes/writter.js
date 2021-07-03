@@ -54,6 +54,7 @@ router.get('/blogposts/:blogpostId', async (req, res) => {
 });
 
 
+
 router.get('/create-blogpost', requireWritter, requireLogin, async (req, res) => {
     res.render('blogposts/blogpost-create');
 });
@@ -93,6 +94,9 @@ router.get('/blogposts/:blogpostId/edit', async (req, res) => {
     });
 });
 
+
+
+
 router.post('/blogposts/:blogpostId/edit', async (req, res) => {
     const {
         author,
@@ -114,24 +118,14 @@ router.post('/blogposts/:blogpostId/edit', async (req, res) => {
 });
 
 
+
+
+
 //Delete
 router.post('/blogposts/:blogpostId/delete', async (req, res) => {
     await Blogpost.findByIdAndDelete(req.params.blogpostId);
     res.redirect('/blogposts');
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

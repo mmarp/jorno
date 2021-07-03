@@ -1,6 +1,6 @@
-<h1>GLOBAL NEWS</h1>
+<h1>NEWS SEARCH RESULTS</h1>
 
-{{!-- to work /news --}}
+
 <form action="/news-search" method="GET">
     {{!-- enctype multipart lets me insert images --}}
 
@@ -19,15 +19,14 @@
 
     {{#each articles}}
 
-<a href="/news/{{_id}}">
-    {{title}}
-</a>
-<p>By: {{author}}</p>
+    <a href="/news/{{_id}}">
+        {{title}}
+    </a>
+    <p>By: {{author}}</p>
 
-     <p>{{title}}</p>
+    {{!-- <p>{{title}}</p> --}}
     {{/each}}
 </ul>
-
 
 
 
