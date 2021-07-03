@@ -19,16 +19,21 @@
 
     {{#each articles}}
 
-    <a href="/news/{{_id}}">
+    <a href="{{url}}" target="_blank">
         {{title}}
     </a>
-    <p>By: {{author}}</p>
+
+    <p>{{description}}</p>
+
+
+    <form action="/news/favorites/add" method="POST">
+        <input type="text" name="title" value="{{title}}" />
+        <input type="text" name="url" value="{{url}}" />
+        <button type="submit">Favorite 💟</button>
+
+    </form>
+
 
     {{!-- <p>{{title}}</p> --}}
     {{/each}}
 </ul>
-
-
-
-
-

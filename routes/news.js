@@ -38,14 +38,14 @@ router.get('/news/:query', async (req, res) => {
 
 //router to news
 router.get('/news', (req, res) => {
-res.render('news/news');
+    res.render('news/news');
 });
 
 
 
 //router to news search
 router.get('/news-search', async (req, res) => {
-const q = req.query.q;
+    const q = req.query.q;
     const response = await newsapi.v2.everything({
         q: q,
         // sources: 'bbc-news,the-verge',
@@ -62,6 +62,48 @@ const q = req.query.q;
         articles
     });
 });
+
+
+
+
+
+
+//NOT YET THERE
+//router to news detail
+// router.get('/news-search-results/:q', async (req, res) => {
+//     let response = await newsapi.v2.everything({
+//         q: req.params.q,
+//         language: 'en',
+//         sortBy: 'relevancy',
+//         page: 4
+//     });
+//     const articles = response.articles;
+//     res.render('news-detail', {
+//         articles
+//     });
+// });
+
+
+
+
+// app.get('/albums/:artistId', async (req, res, next) => {
+
+//     let albumResults = await spotifyWebAPI.getArtistAlbums(req.params.artistId); //params - hoevering on a link
+
+//     console.log(albumResults.body.items);
+
+//     res.render('albums', {
+//         albums: albumResults.body.items
+//     });
+// });
+
+
+
+
+//ADDING TO FAVORITES
+
+
+
 
 
 
