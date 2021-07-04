@@ -8,16 +8,192 @@
 
 
 body {
+  
+  background-color: #F8F8F8;
   padding: 0px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font: 14px Helvetica, Arial, sans-serif;
 }
+
 
 a {
   color: #00b7ff;
 }
 
-h1 {
-  color: 15px;
+
+/* .navbar-light{
+  background-image: url("/images/navbar.jpg") !important;
+  background-size: cover;
+  width: 1440px;
+  height: 77px;
+
+} */
+
+.navbar-light{
+  background-color: white !important;
+  height: 77px;
+}
+
+
+.nav-link{
+  font-family: "Lora";
+  font-style: "regular";
+  font-size: 20px;
+  line-height: 26px;
+  line-height: 100px;
+  letter-spacing: -1.5%;
+  color: #111111 !important;
+  margin: 2px 20px 0px;
+}
+
+
+
+#jorno-logo{
+  width: 180px;
+  margin-left: 20px
+}
+
+
+#navbarNavDropdown{
+  /* border: 1px solid black; */
+  display: flex;
+  justify-content: flex-end;
+
+}
+
+#logout-btn{
+  margin: 40px 10px;
+  background-color: white;
+  color: #18A0FB;
+  border: 1px solid #18A0FB;
+  border-radius: 6px;
+  width: 130px;
+  height: 40px;
+  font-size: 15px;
+  line-height: 18px;
+  line-height: 100%;
+  letter-spacing: 0.2px;
+}
+
+
+
+
+/* NEWS PAGE */
+
+#sketch-icon{
+/* border: 1px solid red; */
+width: 70px;
+margin: 100px 0px 20px 100px;
+
+}
+
+#h1-news{
+color: #111111;
+font-family: "Lora";
+font-weight: bolder;
+font-size: 42px;
+line-height: 48px;
+line-height: 120%;
+letter-spacing: 1px;
+/* border: 1px solid blue; */
+padding-left: 100px;
+}
+
+/* NEWS BACKGROUND REFERENCE */
+/* #news-background{
+  background-image: url("/images/news-background copy.jpg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  height: 1000px;
+} */
+
+
+
+#search-main-div{
+  /* border: 1px solid orange; */
+  display: flex;
+  justify-content: center;
+  margin: 140px 0px;
+}
+
+#search-main-div div{
+  /* border: 1px solid orange; */
+  display: flex;
+  justify-content: center;
+  margin: 20px 0px;
+}
+
+
+
+#search-bar{
+  background-color: #FFFFFF;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  border-radius: 3px;
+  width: 640px;
+  height: 40px;
+  text-align: center;
+}
+
+#search-btn{
+background-color: #111111;
+color: #F8F8F8;
+border: 1px solid #111111;
+border-radius: 6px;
+width: 130px;
+height: 40px;
+font-size: 16px;
+line-height: 18px;
+line-height: 100%;
+letter-spacing: 0.4px;
+}
+
+
+
+
+
+/* NEWS-SEARCH BACKGROUND REFERENCE */
+
+
+
+
+#main-div-card-news {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  border: 2px solid purple;
+  width: 100%;
+  padding: 0px 20px;
+ 
+}
+
+
+.card-news {
+  width: 250px;
+  border: 1px solid yellow;
+   margin: 40px;
+}
+
+
+
+#news-search-background{
+  background-image: url("/images/news-search-background copy.jpg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  height: 1000px;
+  width: 100%;
+  
+}
+
+
+.input-to-hide{
+  display: none;
+}
+
+.favorite-btn{
+  font-size: 20px;
+  border: none;
+  background-color: #F8F8F8;
+  color: #18A0FB;
 }
 
 

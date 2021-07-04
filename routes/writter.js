@@ -161,15 +161,22 @@ router.post("/news/favorites/add", async (req, res) => {
                 title,
                 url
             }
-
-
-
         }
     });
+
 
     // const reqQuery = req.query.q;
     res.redirect('/news');
 });
+
+
+
+
+
+
+
+
+
 
 
 router.get('/news/:userId/favorites', async (req, res) => {
@@ -180,6 +187,46 @@ router.get('/news/:userId/favorites', async (req, res) => {
         newsFavorites
     });
 });
+
+
+
+
+
+
+
+
+
+
+router.post("/news/favorites/:newsId/delete", async (req, res) => {
+    
+    const userDetail = req.session.currentUser;
+    for (let i = 0; i < userDetail.favorites.length; i++) {
+        console.log("Checando se entrou no for pra testar se o filme tá nos favoritos do date: ", userDetail.favorites[i]);
+        if (req.params.newsId === userDetail.favorites[i]) {
+            console.log("Achou igual");
+            //Usuário logado
+            await User.findByIdAndUpdate(req.session.currentUser._id, {
+                $pull: {
+                    favorites: req.params.newsId
+                }
+            });
+        }
+    }
+
+    
+    res.redirect("/news/favorites");
+});
+
+
+//Delete news favorites
+// router.post('/news/favorites/:newsId/delete', async (req, res) => {
+
+// console.log(req.params.newsId);
+
+//     await User.findByIdAndRemove(req.params.newsId);
+//     res.redirect('/news/:newsId/favorites');
+// });
+
 
 
 

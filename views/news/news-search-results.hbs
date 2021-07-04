@@ -1,39 +1,96 @@
-<h1>NEWS SEARCH RESULTS</h1>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+        <img id="jorno-logo" src="/images/jorno-logo.jpg" alt="jorno-logo">
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+            aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav">
+
+                <li class="nav-item">
+                    <a class="nav-link" href="/news">News</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/create-blogpost">Write</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/auth/{{loggedId}}">Profile</a>
+                </li>
 
 
-<form action="/news-search" method="GET">
-    {{!-- enctype multipart lets me insert images --}}
+                <li>
+                    <form action="/logout" method="POST">
+                        <button id="logout-btn" type="submit">Logout</button>
+                    </form>
+                </li>
 
-    <label></label>
-    <input type="text" name="q" placeholder="search" />
+            </ul>
+        </div>
+    </div>
+</nav>
 
-
-    <button type="submit">Search</button>
-
-</form>
-
-
-
-
-<ul>
-
-    {{#each articles}}
-
-    <a href="{{url}}" target="_blank">
-        {{title}}
-    </a>
-
-    <p>{{description}}</p>
+<div id="news-search-background">
 
 
-    <form action="/news/favorites/add" method="POST">
-        <input type="text" name="title" value="{{title}}" />
-        <input type="text" name="url" value="{{url}}" />
-        <button type="submit">Favorite 💟</button>
+    {{!-- CAN I GET Q ON TITLE? --}}
+    <h1 id="h1-news-search">... get inspired. We have the stories. Like<br>thousands of them, from trusted sources.</h1>
+
+
+
+    <form action="/news-search" method="GET">
+        {{!-- enctype multipart lets me insert images --}}
+
+        <label></label>
+        <input type="text" name="q" placeholder="search" />
+
+
+        <button type="submit">Search</button>
 
     </form>
+    
 
 
-    {{!-- <p>{{title}}</p> --}}
-    {{/each}}
-</ul>
+
+        <div id="main-div-card-news">
+
+
+
+            {{#each articles}}
+            <div class="card-news">
+
+                <h5>
+                    <a href="{{url}}" target="_blank">
+                        {{title}}
+                    </a>
+                </h5>
+
+                <p>{{description}}</p>
+                {{!-- <img src="{{urlToImage}}" alt="news-images"> --}}
+
+
+                <form action="/news/favorites/add" method="POST">
+                    <input class="input-to-hide" type="text" name="title" value="{{title}}" />
+                    <input class="input-to-hide" type="text" name="url" value="{{url}}" />
+                    <button class="favorite-btn" type="submit"><i class="fas fa-folder-plus"> <i
+                                class="far fa-bookmark"></i></i></button>
+
+                </form>
+
+
+
+            </div>
+
+
+
+            {{!-- <p>{{title}}</p> --}}
+            {{/each}}
+
+
+
+        </div>
+    
+
+
+</div>
