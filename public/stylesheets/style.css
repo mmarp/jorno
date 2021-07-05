@@ -3,16 +3,28 @@
 
   background-size: cover;
   height: 1000px;
-  
+
 }
 
 
 body {
-  
   background-color: #F8F8F8;
   padding: 0px;
   font: 14px Helvetica, Arial, sans-serif;
 }
+
+
+
+footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 60px;
+  margin-bottom: 30px;  
+}
+
+
+
 
 /* 
 a {
@@ -28,13 +40,13 @@ a {
 
 } */
 
-.navbar-light{
+.navbar-light {
   background-color: white !important;
   height: 77px;
 }
 
 
-.nav-link{
+.nav-link {
   font-family: "Lora";
   font-style: "regular";
   font-size: 20px;
@@ -47,21 +59,21 @@ a {
 
 
 
-#jorno-logo{
+#jorno-logo {
   width: 180px;
   margin-left: 20px
 }
 
 
-#navbarNavDropdown{
+#navbarNavDropdown {
   /* border: 1px solid black; */
   display: flex;
   justify-content: flex-end;
 
 }
 
-#logout-btn{
-  margin: 40px 10px;
+#logout-btn {
+  margin: 40px 50px;
   background-color: white;
   color: #18A0FB;
   border: 1px solid #18A0FB;
@@ -79,23 +91,23 @@ a {
 
 /* NEWS PAGE */
 
-#sketch-icon{
-/* border: 1px solid red; */
-width: 70px;
-margin: 100px 0px 20px 100px;
+#sketch-icon {
+  /* border: 1px solid red; */
+  width: 70px;
+  margin: 60px 0px 20px 100px;
 
 }
 
-#h1-news{
-color: #111111;
-font-family: "Lora";
-font-weight: bolder;
-font-size: 42px;
-line-height: 48px;
-line-height: 120%;
-letter-spacing: 1px;
-/* border: 1px solid blue; */
-padding-left: 100px;
+#h1-news {
+  color: #111111;
+  font-family: "Lora";
+  font-weight: bolder;
+  font-size: 42px;
+  line-height: 48px;
+  line-height: 120%;
+  letter-spacing: 1px;
+  /* border: 1px solid blue; */
+  padding-left: 100px;
 }
 
 /* NEWS BACKGROUND REFERENCE */
@@ -108,14 +120,14 @@ padding-left: 100px;
 
 
 
-#search-main-div{
+#search-main-div {
   /* border: 1px solid orange; */
   display: flex;
   justify-content: center;
-  margin: 140px 0px;
+  margin: 180px 0px;
 }
 
-#search-main-div div{
+#search-main-div div {
   /* border: 1px solid orange; */
   display: flex;
   justify-content: center;
@@ -124,7 +136,7 @@ padding-left: 100px;
 
 
 
-#search-bar{
+#search-bar {
   background-color: #FFFFFF;
   border: 1px solid rgba(0, 0, 0, 0.3);
   border-radius: 3px;
@@ -133,17 +145,17 @@ padding-left: 100px;
   text-align: center;
 }
 
-#search-btn{
-background-color: #111111;
-color: #F8F8F8;
-border: 1px solid #111111;
-border-radius: 6px;
-width: 130px;
-height: 40px;
-font-size: 16px;
-line-height: 18px;
-line-height: 100%;
-letter-spacing: 0.4px;
+.black-btn {
+  background-color: #111111;
+  color: #F8F8F8;
+  border: 1px solid #111111;
+  border-radius: 6px;
+  width: 130px;
+  height: 40px;
+  font-size: 16px;
+  line-height: 18px;
+  line-height: 100%;
+  letter-spacing: 0.4px;
 }
 
 
@@ -170,23 +182,23 @@ letter-spacing: 0.4px;
   /* border: 2px solid purple; */
   width: 100%;
   padding: 0px 20px;
- 
+
 }
 
 
 .card-news {
   width: 450px;
-  
+
   /* border: 1px solid yellow; */
-   margin: 45px;
-   background-color: rgba(0, 0, 0, 0.02);
-  
-   border-radius: 20px;
-   padding: 30px;
+  margin: 45px;
+  background-color: rgba(0, 0, 0, 0.02);
+
+  border-radius: 20px;
+  padding: 30px;
 }
 
 
-.card-news a{
+.card-news a {
   font-family: "Lora";
   font-size: 16px;
   text-decoration: none !important;
@@ -196,53 +208,56 @@ letter-spacing: 0.4px;
   text-align: justify;
 }
 
-.card-news p{
+.card-news p {
   color: #4d5156;
   font-weight: lighter;
   letter-spacing: 0.4px;
   text-align: justify;
- 
+
 }
 
 
 
-.input-to-hide{
+.input-to-hide {
   display: none;
 }
 
-.favorite-btn{
+.favorite-btn {
   font-size: 20px;
   border: none;
   color: #18A0FB;
+  background-color: rgba(0, 0, 0, 0);
 }
 
-#favorites-icon {
+#favorites-icon,
+#delete-icon {
   width: 40px;
   background-color: none;
+  
 }
 
 
 
-#news-search-div{
+#news-search-div {
   margin: 100px 0px 0px;
   display: flex;
   border: 1px solid orange;
   justify-content: flex-start;
-  align-items:center;
+  align-items: center;
   padding-left: 70px;
 }
 
 
-#h1-news-div{
-border: 1px solid blue;
-padding-left: 70px;
+#h1-news-div {
+  border: 1px solid blue;
+  padding-left: 70px;
 }
 
 
 
 
 #h1-news-search {
-  display:inline-block;
+  display: inline-block;
   color: #111111;
   font-family: "Lora";
   font-weight: bolder;
@@ -251,7 +266,7 @@ padding-left: 70px;
   line-height: 120%;
   letter-spacing: 1px;
   border: 1px solid blue;
-  padding-right: 70px;  
+  padding-right: 70px;
 }
 
 #h1-news-search-q {
@@ -270,7 +285,7 @@ padding-left: 70px;
 
 
 
-#search-btn-2-page{
+#search-btn-2-page {
   background-color: #111111;
   color: #F8F8F8;
   border: 1px solid #111111;
@@ -296,77 +311,173 @@ padding-left: 70px;
 #news-search-icon {
   border: 1px solid pink;
   height: 150px;
-padding: 50px 50px 0px;
+  padding: 50px 50px 0px;
 
 }
 
 
 
 /* SIGNUP */
-#signup-background{
+/* #signup-background{
   background-image: url("/images/sign-up-form background.jpg");
   background-size: contain;
   background-repeat: no-repeat;
   height: 1000px;
   width: 100%;
-}
+} */
 
-#sign-up-navbar{
+
+#sign-up-navbar {
   background-color: #F8F8F8 !important;
-  
+
 }
 
-.nav-item{
+.nav-item-tohide {
   display: none;
 }
 
-#login-btn{
-    margin: 40px 10px;
-    background-color: white;
-    color: #18A0FB;
-    border: 1px solid #18A0FB;
-    border-radius: 6px;
-    width: 130px;
-    height: 40px;
-    font-size: 15px;
-    line-height: 18px;
-    line-height: 100%;
-    letter-spacing: 0.2px;
-    padding: 1px 6px;
-    
+#login-btn {
+  margin: 40px 50px;
+  background-color: white;
+  color: #18A0FB;
+  border: 1px solid #18A0FB;
+  border-radius: 6px;
+  width: 130px;
+  height: 40px;
+  font-size: 15px;
+  line-height: 18px;
+  line-height: 100%;
+  letter-spacing: 0.2px;
+  padding: 1px 6px;
+
 }
 
-#login-btn a{
+#login-btn a {
   text-decoration: none;
   color: #18A0FB;
 }
 
 
 
-#h1-singup{
-display:inline-block;
-color: #111111;
-font-family: "Lora";
-font-weight: bolder;
-font-size: 40px;
-line-height: 48px;
-line-height: 120%;
-letter-spacing: 1px;
-border: 1px solid blue;
-padding-left: 100px;
+#h1-singup,
+#h1-login {
+  display: inline-block;
+  color: #111111;
+  font-family: "Lora";
+  font-weight: bolder;
+  font-size: 40px;
+  line-height: 48px;
+  line-height: 120%;
+  letter-spacing: 1px;
+  /* border: 1px solid blue; */
+  padding-left: 100px;
 
 }
 
 
+#signup-div {
+  /* border: 1px solid greenyellow; */
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+}
 
-.input-signup{
+
+
+
+
+.input-signup,
+.input-login {
   border: 1px solid rgba(0, 0, 0, 0.5);
-  width: 494px;
+  width: 500px;
   height: 40px;
-  margin: 20px 100px;
+  margin: 15px 100px;
+}
+
+#text-area-signup {
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  width: 500px;
+  height: 100px;
+  margin: 15px 100px;
+}
+
+#div-signup-btns {
+  margin: 15px 100px;
+  display: flex;
+  justify-content: space-between;
+  /* border: solid 1px orange; */
+  width: 500px;
+}
+
+#div-signup-btns>div {
+  /* border: 1px solid pink; */
+  display: flex;
+  width: 100px;
+  justify-content: space-between;
+
+}
+
+.radio-btn {
+  color: #18A0FB;
+  font-size: 1rem;
+  font-weight: 500;
+  /* border: 1px solid red; */
+  width: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 
+#endpage-jorno-logo {
+  /* border: 1px solid hotpink; */
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 50px;
+}
+
+
+
+
+
+/* LOGIN PAGE */
+#login-btn-page {
+  margin: 15px 100px;
+
+}
+
+
+#sign-up-icon {
+  width: 70px;
+}
+
+
+
+#no-account-div {
+  /* border: 1px solid brown; */
+  display: flex;
+  align-content: flex-end;
+  align-items: flex-end;
+  margin-left: 100px;
+}
+
+ #no-account-div div{
+  margin-bottom: 10px;
+  color: #111111;
+  font-family: "Lora";
+  font-weight: bolder;
+  font-size: 1rem;
+  letter-spacing: 1px;
+} 
+
+ #no-account-div div > a {
+   text-decoration: none;
+   color: #18A0FB;
+   font-family: "Lora";
+   font-weight: bolder;
+   font-size: 1rem;
+   letter-spacing: 1px;
+ }
 
 
 
@@ -405,26 +516,26 @@ padding-left: 100px;
 
 
 /* BLOGPOST LIST - RELOOK!!!*/
- #horizontal_blogpost_alignment {
-   display: flex;
-   flex-direction: row;
-   width: 900px;
-   margin-top: 30px;
-   justify-content: space-between;
- }
+#horizontal_blogpost_alignment {
+  display: flex;
+  flex-direction: row;
+  width: 900px;
+  margin-top: 30px;
+  justify-content: space-between;
+}
 
- #leftside_blogpost {
-   width: 300px;
-   height: 250px;
-   display: flex;
-   flex-direction: column;
-   justify-content: space-around;
- }
+#leftside_blogpost {
+  width: 300px;
+  height: 250px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
 
- #rightside_blogpost {
-   width: 500px;
-   height: 250px;
-   display: flex;
-   flex-direction: column;
-   justify-content: space-around;
- }
+#rightside_blogpost {
+  width: 500px;
+  height: 250px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}

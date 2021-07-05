@@ -61,7 +61,7 @@ app.use(
 
 function getCurrentLoggedUser(req, res, next) {
     if (req.session && req.session.currentUser) {
-        app.locals.loggedInUser = req.session.currentUser.username;
+        app.locals.loggedInUser = req.session.currentUser;
         app.locals.loggedId = req.session.currentUser._id;
     } else {
         app.locals.loggedInUser = "";

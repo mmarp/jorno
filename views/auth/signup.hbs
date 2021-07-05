@@ -11,13 +11,13 @@
                 {{!-- <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="#">Home</a>
                 </li> --}}
-                <li class="nav-item">
+                <li class="nav-item nav-item-tohide">
                     <a class="nav-link" href="/news">News</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item nav-item-tohide">
                     <a class="nav-link" href="/create-blogpost">Write</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item nav-item-tohide">
                     <a class="nav-link" href="/auth/{{loggedId}}">Profile</a>
                 </li>
 
@@ -39,7 +39,7 @@
                 </li> --}}
                 <li>
                     <button id="login-btn" type="submit"><a href="/login">Login</a></button>
-                    
+
                 </li>
 
             </ul>
@@ -54,63 +54,73 @@
 
 {{!-- SIGNUP REFERENCE IMAGE --}}
 <div id="signup-background">
+    <img id="sketch-icon" src="/images/sketch-icon.jpg" alt="sketch-icon">
+    <br>
+    <h1 id="h1-singup">... register to start doing<br> your best writing.</h1>
 
-<h1 id="h1-singup">...register to start doing<br> your best writing.</h1>
+    <div id="signup-div">
+        <form action="/signup" method="POST" enctype="multipart/form-data">
+            <input class="input-signup" type="text" name="username" placeholder="Username" />
+            <br>
+            <input class="input-signup" type="email" name="email" placeholder="Email" />
 
+            <br>
+            <input class="input-signup" type="password" name="password" placeholder="Password" />
 
+            {{!-- <label>Profile Picture</label>
+            <input type="file" name="image" /> --}}
 
-<form action="/signup" method="POST" enctype="multipart/form-data">
+            <br>
+            <input class="input-signup" type="text" name="location" placeholder="Location" />
 
+            <br>
+            <input class="input-signup" type="text" name="interests" placeholder="Interests" />
+            <br>
 
+            <textarea id="text-area-signup" row="20" cols="100" name="bio" placeholder="Bio"></textarea>
 
-<input class="input-signup" type="text" name="username" placeholder="Username" />
+            <br>
+            <div id="div-signup-btns">
+                <button id="register-btn" class="black-btn" type="submit">Register</button>
+                <div>
+                    <div class="radio-btn">
+                        Writer <input type="radio" name="role" value="writter" checked="true">
+                    </div>
 
+                    <div class="radio-btn">
+                        Editor <input type="radio" name="role" value="editor">
+                    </div>
+                </div>
+            </div>
 
-<input class="input-signup" type="email" name="email" placeholder="Email" />
+        </form>
+        
 
-
-<input class="input-signup" type="password" name="password" placeholder="Password"/>
-
-{{!-- <label>Profile Picture</label>
-<input type="file" name="image" /> --}}
-
-
-<input class="input-signup" type="text" name="location" placeholder="Location"/>
-
-
-<input class="input-signup" type="text" name="interests" placeholder="Interests"/>
-
-
-<textarea row="20" cols="100" name="bio" placeholder="Bio"></textarea>
-
-
-
-Writer <input type="radio" name="role" value="writter" checked="true">
-Editor <input type="radio" name="role" value="editor">
-
-
-
-<button type="submit">Register</button>
-
-</form>
-
-
-
-
-
-
+    </div>
 
 
 
 
 
-{{#if errorMessage}}
-<p>{{errorMessage}}</p>
-{{/if}}
-<script>
 
-</script>
+
+
+
+
+
+
+    {{#if errorMessage}}
+    <p>{{errorMessage}}</p>
+    {{/if}}
+
 
 
 
 </div>
+
+<footer>
+    <div id="endpage-jorno-logo">
+        <img id="jorno-logo" src="/images/jorno-logo.png" alt="jorno-logo">
+    </div>
+
+</footer>

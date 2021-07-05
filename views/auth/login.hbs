@@ -1,19 +1,85 @@
-<h2>Login</h2>
-<form action="/login" method="POST">
+<nav id="sign-up-navbar" class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+        {{!-- <img id="jorno-logo" src="/images/jorno-logo.jpg" alt="jorno-logo"> --}}
+        {{!-- <a class="navbar-brand" href="#">Navbar</a> --}}
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+            aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav">
+                {{!-- <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">Home</a>
+                </li> --}}
+                <li class="nav-item nav-item-tohide">
+                    <a class="nav-link" href="/news">News</a>
+                </li>
+                <li class="nav-item nav-item-tohide">
+                    <a class="nav-link" href="/create-blogpost">Write</a>
+                </li>
+                <li class="nav-item nav-item-tohide">
+                    <a class="nav-link" href="/auth/{{loggedId}}">Profile</a>
+                </li>
 
-    <label>Username</label>
-    <input type="text" name="username" />
+                {{!-- <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        Dropdown link
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <li><a class="dropdown-item" href="#">Action</a></li>
+                        <li><a class="dropdown-item" href="#">Another action</a></li>
+                        <li><a class="dropdown-item" href="#">Something else here</a></li>
+                    </ul>
+                </li>--}}
+                {{!-- <li>
+                    <form action="/logout" method="POST">
+                        <button id="logout-btn" type="submit">Logout</button>
+                    </form>
+                </li> --}}
+                <li>
+                    <button id="login-btn" type="submit"><a href="/login">Login</a></button>
 
-    <label>Password</label>
-    <input type="password" name="password" />
+                </li>
 
-    <button type="submit">Login</button>
+            </ul>
+        </div>
+    </div>
+</nav>
 
-</form>
+<img id="sketch-icon" src="/images/sketch-icon.jpg" alt="sketch-icon">
+<br>
+<h1 id="h1-login">... ready to get back to your writting?<br> Login to access.</h1>
 
+<div id="login-div">
+
+
+    <form action="/login" method="POST">
+
+        <input class="input-login" type="text" name="username" placeholder="Username" />
+        <br>
+        <input class="input-login" type="password" name="password" placeholder="Password" />
+        <br>
+        <button id="login-btn-page" class="black-btn" type="submit">Login</button>
+
+    </form>
+    <div id="no-account-div">
+        <img id="sign-up-icon" src="/images/signup-icon.png" alt="signup-icon">
+        <div>Don't have an account? Sign up <a href="/signup">here</a></div>
+
+    </div>
+
+
+
+</div>
 
 {{#if errorMessage}}
 <p>{{errorMessage}}</p>
 {{/if}}
 
-<p>Don't have an account? Sign up <a href="/signup">here</a></p>
+<footer>
+    <div id="endpage-jorno-logo">
+        <img id="jorno-logo" src="/images/jorno-logo.png" alt="jorno-logo">
+    </div>
+
+</footer>
