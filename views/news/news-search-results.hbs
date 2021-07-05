@@ -32,65 +32,70 @@
 </nav>
 
 <div id="news-search-background">
-
+<img id="news-search-icon" src="/images/news-search-icon.jpg" alt="news-search-icon">
 
     {{!-- CAN I GET Q ON TITLE? --}}
-    <h1 id="h1-news-search">... get inspired. We have the stories. Like<br>thousands of them, from trusted sources.</h1>
+    <div id="news-search-div">
+        <form action="/news-search" method="GET">
+            {{!-- enctype multipart lets me insert images --}}
+
+            <label></label>
+            <input id="search-bar-page-2" type="text" name="q" placeholder="Search" />
+
+
+            <button id="search-btn-2-page" type="submit"><i class="fas fa-search"></i></button>
+
+        </form>
+
+        <h1 id="h1-news-search">Your search results</h1>
+    </div>
 
 
 
-    <form action="/news-search" method="GET">
-        {{!-- enctype multipart lets me insert images --}}
-
-        <label></label>
-        <input type="text" name="q" placeholder="search" />
-
-
-        <button type="submit">Search</button>
-
-    </form>
-    
 
 
 
-        <div id="main-div-card-news">
+
+
+    <div id="main-div-card-news">
 
 
 
-            {{#each articles}}
-            <div class="card-news">
+        {{#each articles}}
+        <div class="card-news">
 
-                <h5>
-                    <a href="{{url}}" target="_blank">
-                        {{title}}
-                    </a>
-                </h5>
+            <h5>
+                <a href="{{url}}" target="_blank">
+                    {{title}}
+                </a>
+            </h5>
 
-                <p>{{description}}</p>
-                {{!-- <img src="{{urlToImage}}" alt="news-images"> --}}
+            <p>{{description}}</p>
+            {{!-- <img src="{{urlToImage}}" alt="news-images"> --}}
+            <p>{{content}}</p>
+            {{!-- <p>{{author}}</p>
+            <p>{{publishedAt}}</p> --}}
+            <form action="/news/favorites/add" method="POST">
+                <input class="input-to-hide" type="text" name="title" value="{{title}}" />
+                <input class="input-to-hide" type="text" name="url" value="{{url}}" />
+                <button class="favorite-btn" type="submit"><i class="fas fa-folder-plus"> <i
+                            class="far fa-bookmark"></i></i></button>
 
-
-                <form action="/news/favorites/add" method="POST">
-                    <input class="input-to-hide" type="text" name="title" value="{{title}}" />
-                    <input class="input-to-hide" type="text" name="url" value="{{url}}" />
-                    <button class="favorite-btn" type="submit"><i class="fas fa-folder-plus"> <i
-                                class="far fa-bookmark"></i></i></button>
-
-                </form>
-
-
-
-            </div>
-
-
-
-            {{!-- <p>{{title}}</p> --}}
-            {{/each}}
+            </form>
 
 
 
         </div>
-    
+
+
+
+        {{!-- <p>{{title}}</p> --}}
+        {{/each}}
+
+
+
+    </div>
+
 
 
 </div>
