@@ -31,32 +31,49 @@
     </div>
 </nav>
 
+<div class="user-profile-div">
 
 
-<h1>Profile</h1>
+    <div id="user-profile-div-1">
+        <h1>Profile</h1>
 
-<p>Username: {{username}}</p>
-<p>Email: {{email}}</p>
-<p>Role: {{role}}</p>
+        <span>Username</span>
+        <article> {{username}}</article>
+        <span>Email</span>
+        <article> {{email}}</article>
+        <span>Role </span>
+        <article>{{role}}</article>
 
-{{!-- {{#if imageUrl}}
-<img height="200" width="200" src={{imageUrl}} />
-{{/if}} --}}
-
-
-{{#if location}}
-<p>Location: {{location}}</p>
-{{/if}}
-
-
-{{#each interests}}
-<p>Interests:{{this}}</p>
-{{/each}}
+        {{!-- {{#if imageUrl}}
+        <img height="200" width="200" src={{imageUrl}} />
+        {{/if}} --}}
 
 
-{{#if bio}}
-<p>Bio: {{bio}}</p>
-{{/if}}
+        <button id="edit-profile" class="black-btn" type="submit">
+            <a href="/auth/{{_id}}/edit">Edit profile</a>
+        </button>
+    </div>
+    <div id="user-profile-div-2">
+        {{#if location}}
+        <span>Location</span>
+        <article>{{location}}</article>
+        {{/if}}
 
 
-<a href="/auth/{{_id}}/edit">Edit profile</a>
+        {{#each interests}}
+        <span>Interests</span>
+        <article>{{this}}</article>
+
+        {{/each}}
+
+
+        {{#if bio}}
+        <span>Bio</span>
+        <article>{{bio}}</article>
+
+        {{/if}}
+
+
+    </div>
+
+</div>

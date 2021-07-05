@@ -1,33 +1,87 @@
-<h1>Edit Profile</h1>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+        <img id="jorno-logo" src="/images/jorno-logo.jpg" alt="jorno-logo">
+        {{!-- <a class="navbar-brand" href="#">Navbar</a> --}}
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+            aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav">
+                {{!-- <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">Home</a>
+                </li> --}}
+                <li class="nav-item">
+                    <a class="nav-link" href="/news">News</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/create-blogpost">Write</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/auth/{{loggedId}}">Profile</a>
+                </li>
+                <li>
+                    <form action="/logout" method="POST">
+                        <button id="logout-btn" type="submit">Logout</button>
+                    </form>
+                </li>
 
-<p>Username: {{userToEdit.username}}</p>
-<p>Email: {{userToEdit.email}}</p>
-<p>Role: {{userToEdit.role}}</p>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+<div class="user-profile-div">
+    <img id="edit-profile-icon" src="/images/edit-profile-icon.png" alt="edit-profile-icon">
+    <h1>Edit Profile</h1>
+    <div>
+        <span class="span-bold">Username</span>
+        <span>{{userToEdit.username}}</span>
+    </div>
+    
+    <div>
+        <span class="span-bold">Email</span>
+        <span>{{userToEdit.email}}</span>
+    </div>
+    
+    <div>
+        <span class="span-bold">Role</span>
+        <span>{{userToEdit.role}}</span>
+    </div>
+
+
+<br>
+<br>
+
+
+    <form action="/auth/{{userToEdit._id}}/edit" method="POST">
+
+
+        <label>Location</label>
+        <br>
+        <input class="input-edit" type="text" name="location" value="{{userToEdit.location}}" />
+
+        <br>
+        <label>Interests</label>
+        <br>
+        <input class="input-edit" type="text" name="interests" value="{{userToEdit.interests}}" />
+        <br>
+        <label>Bio</label>
+        <br>
+        <textarea id="text-area-edit" row="20" cols="100" name="bio">{{userToEdit.bio}}</textarea>
+
+
+        {{!-- <label>Bio</label>
+        <input type="text" name="bio" value="{{userToEdit.bio}}" /> --}}
 
 
 
-<form action="/auth/{{userToEdit._id}}/edit" method="POST" >
 
+        <br>
 
-<label>Location</label>
-<input type="text" name="location" value="{{userToEdit.location}}" />
+        <button class="black-btn" type="submit">Update</button>
 
+    </form>
 
-<label>Interests</label>
-<input type="text" name="interests" value="{{userToEdit.interests}}" />
-
-
-
-<label>Bio</label>
-<input type="text" name="bio" value="{{userToEdit.bio}}" />
-
-
-
-
-
-
-<button type="submit">Update</button>
-
-</form>
-
-
+</div>
