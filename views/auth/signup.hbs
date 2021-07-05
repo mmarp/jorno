@@ -1,30 +1,87 @@
-<h2>Signup</h2>
+<nav id="sign-up-navbar" class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+        {{!-- <img id="jorno-logo" src="/images/jorno-logo.jpg" alt="jorno-logo"> --}}
+        {{!-- <a class="navbar-brand" href="#">Navbar</a> --}}
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+            aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav">
+                {{!-- <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">Home</a>
+                </li> --}}
+                <li class="nav-item">
+                    <a class="nav-link" href="/news">News</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/create-blogpost">Write</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/auth/{{loggedId}}">Profile</a>
+                </li>
+
+                {{!-- <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        Dropdown link
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <li><a class="dropdown-item" href="#">Action</a></li>
+                        <li><a class="dropdown-item" href="#">Another action</a></li>
+                        <li><a class="dropdown-item" href="#">Something else here</a></li>
+                    </ul>
+                </li>--}}
+                {{!-- <li>
+                    <form action="/logout" method="POST">
+                        <button id="logout-btn" type="submit">Logout</button>
+                    </form>
+                </li> --}}
+                <li>
+                    <button id="login-btn" type="submit"><a href="/login">Login</a></button>
+                    
+                </li>
+
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+
+
+
+
+{{!-- SIGNUP REFERENCE IMAGE --}}
+<div id="signup-background">
+
+<h1 id="h1-singup">...register to start doing<br> your best writing.</h1>
+
+
+
 <form action="/signup" method="POST" enctype="multipart/form-data">
 
 
-<label>Username</label>
-<input type="text" name="username" />
 
-<label>Email</label>
-<input type="email" name="email" />
-
-<label>Password</label>
-<input type="password" name="password" />
-
-<label>Profile Picture</label>
-<input type="file" name="image" />
-
-<label>Location</label>
-<input type="text" name="location" />
-
-<label>Interests</label>
-<input type="text" name="interests" />
-
-<label>Bio</label>
-<textarea row="20" cols="100" name="bio"></textarea>
+<input class="input-signup" type="text" name="username" placeholder="Username" />
 
 
+<input class="input-signup" type="email" name="email" placeholder="Email" />
 
+
+<input class="input-signup" type="password" name="password" placeholder="Password"/>
+
+{{!-- <label>Profile Picture</label>
+<input type="file" name="image" /> --}}
+
+
+<input class="input-signup" type="text" name="location" placeholder="Location"/>
+
+
+<input class="input-signup" type="text" name="interests" placeholder="Interests"/>
+
+
+<textarea row="20" cols="100" name="bio" placeholder="Bio"></textarea>
 
 
 
@@ -33,7 +90,7 @@ Editor <input type="radio" name="role" value="editor">
 
 
 
-<button type="submit">Create account</button>
+<button type="submit">Register</button>
 
 </form>
 
@@ -53,3 +110,7 @@ Editor <input type="radio" name="role" value="editor">
 <script>
 
 </script>
+
+
+
+</div>

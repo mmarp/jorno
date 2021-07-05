@@ -149,7 +149,7 @@ router.post('/blogposts/:blogpostId/delete', async (req, res) => {
 
 
 //News favorites
-router.post("/news/favorites/add", async (req, res) => {
+router.post("/news/favorites/:query/add", async (req, res) => {
     console.log("HEREEEEEE", req.session.currentUser._id);
     const {
         title,
@@ -166,7 +166,7 @@ router.post("/news/favorites/add", async (req, res) => {
 
 
     // const reqQuery = req.query.q;
-    res.redirect('/news');
+    res.redirect(`/news-search?q=${req.params.query}`);
 });
 
 
@@ -181,7 +181,7 @@ router.post("/news/favorites/add", async (req, res) => {
 
 router.get('/news/:userId/favorites', async (req, res) => {
     const userDetail = await User.findById(req.params.userId);
-    
+
     const newsFavorites = userDetail.favorites;
     res.render('news/news-favorites', {
         newsFavorites
@@ -197,35 +197,27 @@ router.get('/news/:userId/favorites', async (req, res) => {
 
 
 
-// router.post("/news/favorites/:newsId/delete", async (req, res) => {
-    
-//     const userDetail = req.session.currentUser;
-//     console.log(req.session.currentUser.favorites);
-//     for (let i = 0; i < userDetail.favorites.length; i++) {
-//         console.log("Checando se entrou no for pra testar se o filme tá nos favoritos do date: ", userDetail.favorites[i]);
-//         if (req.params.newsId === userDetail.favorites[i]._id) {
-//             console.log("Achou igual", userDetail.favorites[i].title);
-//             //Usuário logado
-            
-//             await User.findByIdAndUpdate(req.session.currentUser._id, {
-//                 $pull: {
-//                     favorites: userDetail.favorites[i]._id
-//                 }
-//             });
-//         }
-//     }
-//     res.redirect("/news/favorites");
-// });
+router.post("/news/favorites/:newsId/delete", async (req, res) => {    
+    await User.findByIdAndUpdate(req.session.currentUser._id, {
+        $pull: {
+            favorites: {
+                _id: req.params.newsId
+            }
+        }
+    });
+
+    res.redirect("/news/favorites");
+});
 
 
 // Delete news favorites
-router.post('/news/favorites/:newsId/delete', async (req, res) => {
+// router.post('/news/favorites/:newsId/delete', async (req, res) => {
 
-console.log("hey", req.params.newsId);
+// console.log("hey", req.params.newsId);
 
-    await User.findByIdAndRemove(req.params.newsId);
-    res.redirect('/news');
-});
+//     await User.findByIdAndRemove(req.params.newsId);
+//     res.redirect('/news');
+// });
 
 
 

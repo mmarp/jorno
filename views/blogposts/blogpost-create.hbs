@@ -1,8 +1,8 @@
 <h1>Create new blog post</h1>
-<form action="/create-blogpost" method="POST">
+{{!-- <form action="/create-blogpost" method="POST"> --}}
     {{!-- enctype multipart lets me insert images --}}
 
-    <label>Author</label>
+    {{!-- <label>Author</label>
     <input type="text" name="author" />
 
     <label>Title</label>
@@ -22,8 +22,40 @@
 
     <button type="submit">Create</button>
 
-</form>
+</form> --}}
 
+
+
+
+{{!-- TEXT EDITOR --}}
+ <form action="/create-blogpost" method="POST">
+        <br>
+        <br>
+        <textarea id="myEditor" name="content" placeholder="Put pen to paper. Here.">                     
+        </textarea>
+    <section id="horizontal_blogpost_alignment">   
+        <div id="leftside_blogpost">
+            {{!-- <label>What will you be writing today?</label>
+            <input type="text" name="typeOfBlog" /> --}}
+            {{!-- <label>...directed to which publisher(s)?</label>
+            <input type="text" name="choosenPublishers" /> --}}
+            <label>What's the main keywords?</label>
+            <input type="text" name="keywords" />
+            <label>Date</label>
+            <input type="date" name="publishedAt" /> 
+        </div>
+        <div id="rightside_blogpost">
+            <label>Providing a title and rubric is a science... Go ahead anyway.</label>
+            <input type="text" name="title" placeholder="Title goes here" />
+            <label></label>
+            <textarea name="description" placeholder="Brief description here"></textarea>
+            <label>Provide your name (or alias) to confirm youself as the writer of the piece</label>
+            <input type="text" name="author" />
+        </div>
+    </section> 
+    <br>
+        <button type="submit">Create post</button>
+    </form> 
 
 
 

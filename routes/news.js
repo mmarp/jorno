@@ -59,7 +59,7 @@ router.get('/news-search', async (req, res) => {
 
     const articles = response.articles;
     res.render('news/news-search-results', {
-        articles
+        articles, q
     });
 });
 

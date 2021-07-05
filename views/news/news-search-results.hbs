@@ -32,7 +32,13 @@
 </nav>
 
 <div id="news-search-background">
-<img id="news-search-icon" src="/images/news-search-icon.jpg" alt="news-search-icon">
+    <img id="news-search-icon" src="/images/news-search-icon.jpg" alt="news-search-icon">
+    <div id="h1-news-div">
+        <h1 id="h1-news-search">Your search results</h1>
+
+        <h1 id="h1-news-search-q">{{q}}</h1>
+    </div>
+
 
     {{!-- CAN I GET Q ON TITLE? --}}
     <div id="news-search-div">
@@ -46,9 +52,12 @@
             <button id="search-btn-2-page" type="submit"><i class="fas fa-search"></i></button>
 
         </form>
-
-        <h1 id="h1-news-search">Your search results</h1>
     </div>
+
+
+
+
+
 
 
 
@@ -75,11 +84,13 @@
             <p>{{content}}</p>
             {{!-- <p>{{author}}</p>
             <p>{{publishedAt}}</p> --}}
-            <form action="/news/favorites/add" method="POST">
+            <form action="/news/favorites/{{../q}}/add" method="POST">
                 <input class="input-to-hide" type="text" name="title" value="{{title}}" />
                 <input class="input-to-hide" type="text" name="url" value="{{url}}" />
-                <button class="favorite-btn" type="submit"><i class="fas fa-folder-plus"> <i
-                            class="far fa-bookmark"></i></i></button>
+                <button class="favorite-btn" type="submit"><img id="favorites-icon" src="/images/favorites.png" alt="favorites-icon">
+                    {{!-- <i class="fas fa-folder-plus"> <i
+                            class="far fa-bookmark"></i></i> --}}
+                            </button>
 
             </form>
 

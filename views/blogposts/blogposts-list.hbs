@@ -1,14 +1,14 @@
-<h1>Blogposts list</h1>
+{{!-- <h1>Blogposts list</h1>
 
 {{#each blogpostsFromDB}}
 <div>
     <a href="/blogposts/{{_id}}">
         {{title}}
     </a>
-    <p>By: {{author}}</p>
+    <p>By: {{author}}</p> --}}
 
     {{!-- HTML only supports get or post methods --}}
-    <form action="/blogposts/{{_id}}/delete" method="POST">
+    {{!-- <form action="/blogposts/{{_id}}/delete" method="POST">
         <button type="submit">Delete</button>
     </form>
 
@@ -16,4 +16,29 @@
 
 </div>
 <br><br>
+{{/each}} --}}
+
+
+
+
+
+
+<h3>Blogposts list</h3>
+{{#each blogpostsFromDB }}
+<div id="article-head">
+    <a id="title-style" href="/blogposts/{{_id}}">
+        <h2>{{title}}</h2>
+    </a>
+    <h4>{{description}}</h4>
+    {{author}}
+</div>
+<br>
+<div id="article-content">
+    {{{content}}}
+</div>
+<br>
+<form action="/blogposts/{{_id}}/delete" method="POST">
+    <button type="submit">Delete</button>
+</form>
+<br>
 {{/each}}
