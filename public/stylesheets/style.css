@@ -207,10 +207,17 @@ a {
   /* border: 1px solid yellow; */
   margin: 45px;
   background-color: rgba(0, 0, 0, 0.02);
-
+  /* box-shadow: 3px 3px 1px rgba(0, 0, 0, 0.1); */
   border-radius: 20px;
   padding: 30px;
 }
+
+
+#separation-line {
+  border-bottom: 0.5px solid #4d5156b0;
+  margin: 20px 0px 40px;
+}
+
 
 
 .card-news a {
@@ -222,6 +229,7 @@ a {
   letter-spacing: 0.4px;
   text-align: justify;
 }
+
 
 .card-news p {
   color: #4d5156;
@@ -265,6 +273,7 @@ a {
 #h1-news-div {
   border: 1px solid blue;
   padding-left: 70px;
+
 }
 
 
@@ -324,10 +333,46 @@ a {
 
 #news-search-icon,
 #news-fav-icon {
-  border: 1px solid pink;
+  /* border: 1px solid pink; */
   height: 150px;
   padding: 50px 50px 0px;
 }
+
+
+/* NEWS FAVORITES */
+.news-fav a {
+  text-decoration: none;
+  color: #111111;
+  font-weight: bold;
+  font-family: "Lora";
+  font-size: 1rem;
+  margin-left: 70px;
+}
+
+.news-fav img {
+  margin-left: 70px;
+}
+
+
+
+.news-fav {
+  /* border: 1px solid orangered; */
+  margin: 10px 0px;
+}
+
+#h1-news-fav-div {
+  border: 1px solid blue;
+  margin-left: 70px;
+  margin-bottom: 30px;
+}
+
+
+
+
+
+
+
+
 
 
 
@@ -363,13 +408,44 @@ a {
   line-height: 100%;
   letter-spacing: 0.2px;
   padding: 1px 6px;
-
 }
+
 
 #login-btn a {
   text-decoration: none;
   color: #18A0FB;
 }
+
+
+#signup-btn {
+  margin: 40px 0px;
+  background-color: #18A0FB;
+  color: white;
+  border: 1px solid #18A0FB;
+  border-radius: 6px;
+  width: 130px;
+  height: 40px;
+  font-size: 15px;
+  line-height: 18px;
+  line-height: 100%;
+  letter-spacing: 0.2px;
+  padding: 1px 6px;
+
+
+}
+
+#signup-btn a {
+  text-decoration: none;
+  color: white;
+
+}
+
+
+
+
+
+
+
 
 
 
@@ -511,8 +587,8 @@ a {
 
 #user-profile-div-1,
 #user-profile-div-2 {
-  
-  display: flex; 
+
+  display: flex;
   /* border: 1px solid orange; */
   flex-direction: column;
   width: 500px;
@@ -525,18 +601,18 @@ a {
   justify-content: space-around;
 }
 
-#user-profile-div-2 a{
+#user-profile-div-2 a {
   text-decoration: none;
   font-family: "Lora";
   font-size: 1.5rem;
   font-weight: bold;
   color: #111111;
-  
+
 }
 
 
-#profile-blogposts-a{
-  margin-top: 20px;
+#profile-blogposts-a {
+  margin-top: 25px;
 }
 
 
@@ -568,12 +644,14 @@ a {
 
 
 #profile-blogposts-icon {
-  width: 70px;
+  width: 45px;
+  margin-right: 10px;
 }
 
 
 #profile-favnews-icon {
-  width: 50px;
+  width: 35px;
+  margin-right: 10px;
 }
 
 

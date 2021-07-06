@@ -36,7 +36,7 @@
 
 <div id="news-search-background">
     <img id="news-fav-icon" src="/images/profile-news-icon.png" alt="news-fav-icon">
-    <div id="h1-news-div">
+    <div id="h1-news-fav-div">
 
         <h1>News archive</h1>
 
@@ -44,7 +44,7 @@
 
 
 {{#each newsFavorites}}
-<div>
+<div class="news-fav">
     {{!-- <a href="{{url}}" target="_blank">
         {{title}}
     </a> --}}
@@ -53,7 +53,7 @@
         {{title}}
     </a>
     <form action="/news/favorites/{{_id}}/delete" method="POST">
-        <button class="favorite-btn" type="submit"><img id="delete-icon" src="/images/explosion.png" alt="detele-icon"></button>
+        <button class="favorite-btn" type="submit"><img id="delete-icon" src="/images/delete.png" alt="detele-icon"></button>
     </form>
     <br>
 
@@ -61,7 +61,7 @@
     {{!-- <form action="/blogposts/{{_id}}/delete" method="POST">
         <button type="submit">Delete</button>
     </form> --}}
-
+</div>
 {{/each}}
 
 
