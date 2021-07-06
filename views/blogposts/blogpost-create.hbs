@@ -1,4 +1,55 @@
-<h1>Create new blog post</h1>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+        <img id="jorno-logo" src="/images/jorno-logo.jpg" alt="jorno-logo">
+        {{!-- <a class="navbar-brand" href="#">Navbar</a> --}}
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+            aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav">
+                {{!-- <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">Home</a>
+                </li> --}}
+                <li class="nav-item">
+                    <a class="nav-link" href="/news">News</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/create-blogpost">Write</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/auth/{{loggedId}}">Profile</a>
+                </li>
+
+                {{!-- <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        Dropdown link
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <li><a class="dropdown-item" href="#">Action</a></li>
+                        <li><a class="dropdown-item" href="#">Another action</a></li>
+                        <li><a class="dropdown-item" href="#">Something else here</a></li>
+                    </ul>
+                </li>--}}
+                <li>
+                    <form action="/logout" method="POST">
+                        <button id="logout-btn" type="submit">Logout</button>
+                    </form>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+
+
+
+
+
+{{!-- <h1>Create new blog post</h1> --}}
 {{!-- <form action="/create-blogpost" method="POST"> --}}
     {{!-- enctype multipart lets me insert images --}}
 
@@ -28,18 +79,18 @@
 
 
 {{!-- TEXT EDITOR --}}
- <form action="/create-blogpost" method="POST">
+ {{!-- <form action="/create-blogpost" method="POST">
         <br>
         <br>
         <textarea id="myEditor" name="content" placeholder="Put pen to paper. Here.">                     
         </textarea>
     <section id="horizontal_blogpost_alignment">   
-        <div id="leftside_blogpost">
+        <div id="leftside_blogpost"> --}}
             {{!-- <label>What will you be writing today?</label>
             <input type="text" name="typeOfBlog" /> --}}
             {{!-- <label>...directed to which publisher(s)?</label>
             <input type="text" name="choosenPublishers" /> --}}
-            <label>What's the main keywords?</label>
+            {{!-- <label>What's the main keywords?</label>
             <input type="text" name="keywords" />
             <label>Date</label>
             <input type="date" name="publishedAt" /> 
@@ -55,7 +106,39 @@
     </section> 
     <br>
         <button type="submit">Create post</button>
-    </form> 
+    </form>  --}}
 
 
+
+<div id="body-create-blogpost">
+    <form action="/create-blogpost" method="POST">
+        <br>
+        <br>
+        <textarea id="myEditor" name="content" placeholder="Put pen to paper. Here.">
+        </textarea>
+        <section id="horizontal_blogpost_alignment">
+            <div id="leftside_blogpost">
+                {{!-- <label>What will you be writing today?</label>
+                <input type="text" name="typeOfBlog" /> --}}
+                {{!-- <label>...directed to which publisher(s)?</label>
+                <input type="text" name="choosenPublishers" /> --}}
+                <label>What's the main keywords?</label>
+                <input type="text" name="keywords" />
+                <label>Date</label>
+                <input type="date" name="publishedAt" />
+            </div>
+            <div id="rightside_blogpost">
+                <label>Providing a title and rubric is a science... Go ahead anyway.</label>
+                <input type="text" name="title" placeholder="Title goes here" />
+                <label></label>
+                <textarea name="description" placeholder="Brief description here"></textarea>
+                <label>Provide your name (or alias) to confirm youself as the writer of the piece</label>
+                <input type="text" name="author" />
+            </div>
+        </section>
+        <br>
+        <button id="create-blogpost-btn" type="submit">Create post</button>
+    </form>
+
+</div>
 

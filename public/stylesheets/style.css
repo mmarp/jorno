@@ -322,11 +322,11 @@ a {
   text-align: center;
 }
 
-#news-search-icon {
+#news-search-icon,
+#news-fav-icon {
   border: 1px solid pink;
   height: 150px;
   padding: 50px 50px 0px;
-
 }
 
 
@@ -631,18 +631,26 @@ a {
 
 
 
-/* BLOGPOST CREATE - RELOOK!!! */
+/* BLOGPOST CREATE */
+#body-create-blogpost {
+  margin-left: 75px;
+  margin-top: 50px;
+}
+
 #horizontal_blogpost_alignment {
   display: flex;
   flex-direction: row;
   width: 900px;
   margin-top: 30px;
   justify-content: space-between;
+  font-family: "Lora";
+  font-size: 15px;
+  font-weight: bold;
 }
 
 #leftside_blogpost {
   width: 300px;
-  height: 250px;
+  height: 150px;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -650,36 +658,173 @@ a {
 
 #rightside_blogpost {
   width: 500px;
-  height: 250px;
+  height: 225px;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
 }
 
+#create-blogpost-btn {
+  background-color: #111111;
+  color: #F8F8F8;
+  border: 1px solid #111111;
+  border-radius: 6px;
+  width: 160px;
+  height: 40px;
+  font-size: 16px;
+  line-height: 18px;
+  line-height: 100%;
+  letter-spacing: 0.4px;
+  /* margin-top: ; */
+}
 
 
 
-/* BLOGPOST LIST - RELOOK!!!*/
-#horizontal_blogpost_alignment {
+
+
+
+
+
+
+
+
+
+
+
+/* BLOGPOST LIST - WORK IN PROGRESS*/
+#blog-item-in-list {
+  margin-top: 100px;
+  margin-left: 200px;
+}
+
+#article-head {
+  width: 600px;
+  margin-top: 30px;
+  margin-left: 100px;
+  font-family: "Lora";
+  font-size: 40px;
+}
+
+#horizontal-over-content {
   display: flex;
   flex-direction: row;
-  width: 900px;
-  margin-top: 30px;
+  align-items: flex-start;
+}
+
+.blog-description {
+  font-size: 17px;
+  font-family: "Lora";
+  font-weight: bolder;
+}
+
+#blog-author-info {
+  font-size: 15px;
+  font-family: "Lora";
+  color: darkgrey;
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+  height: 50px;
   justify-content: space-between;
 }
 
-#leftside_blogpost {
-  width: 300px;
-  height: 250px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
+.byline-author-img {
+  width: 45px;
+  height: 45px;
+  background-color: darkgrey;
+  margin-right: 20px;
 }
 
-#rightside_blogpost {
-  width: 500px;
-  height: 250px;
+#string-of-icons {
+  width: 200px;
+  margin-left: 100px;
+}
+
+.SoMe-icons {
+  width: 25px;
+  height: 25px;
+}
+
+#article-content {
+  width: 600px;
+  margin-left: 100px;
+  font-family: "Lora";
+  font-size: 17px;
+}
+
+#title-style {
+  color: black;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+
+
+
+
+
+
+
+
+
+
+/* LANDING PAGE */
+#horizontal-landing-header-logo {
   display: flex;
-  flex-direction: column;
-  justify-content: space-around;
+  flex-direction: row;
+  align-items: center;
+  margin-left: 250px;
+  margin-top: 55px;
+  margin-bottom: -15px;
+}
+
+#landing-name {
+  font-family: "Lora";
+  font-size: 175px;
+  font-weight: bold;
+}
+
+#landing-page-logo {
+  width: 150px;
+  height: 150px;
+  margin-left: 25px;
+  margin-top: 40px;
+}
+
+#landing-catchphrase {
+  font-family: "Lora";
+  font-size: 32px;
+  font-weight: normal;
+  width: 600px;
+  margin-left: 350px;
+}
+
+#second-catch-phrase {
+  font-family: "Lora";
+  font-size: 20px;
+  font-weight: normal;
+  line-height: 140%;
+  color: whitesmoke;
+  padding-top: 40px;
+  margin-left: 70px;
+  width: 300px;
+}
+
+body {
+  background-color: #F8F8F8;
+  padding: 0px;
+}
+
+#landing-black-divider {
+  margin-top: 30px;
+  height: 300px;
+  width: 100%;
+  background-color: black;
+}
+
+#tiny-mce-screendump {
+  width: 750px;
+  margin-top: 50px;
+  margin-left: 500px;
+  margin-bottom: -200px;
 }
