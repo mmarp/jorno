@@ -49,15 +49,11 @@
         <span class="span-bold">Role</span>
         <span>{{userToEdit.role}}</span>
     </div>
-
-
 <br>
 <br>
 
 
     <form action="/auth/{{userToEdit._id}}/edit" method="POST">
-
-
         <label>Location</label>
         <br>
         <input class="input-edit" type="text" name="location" value="{{userToEdit.location}}" />
@@ -74,14 +70,7 @@
 
         {{!-- <label>Bio</label>
         <input type="text" name="bio" value="{{userToEdit.bio}}" /> --}}
-
-
-
-
         <br>
-
         <button class="black-btn" type="submit">Update</button>
-
     </form>
-
 </div>

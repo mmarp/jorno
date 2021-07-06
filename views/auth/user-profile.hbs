@@ -32,48 +32,92 @@
 </nav>
 
 <div class="user-profile-div">
+    <img id="profile-icon" src="/images/profile-icon.png" alt="profile-icon">
+    <h1>Profile</h1>
+    <div>
 
 
-    <div id="user-profile-div-1">
-        <h1>Profile</h1>
-
-        <span>Username</span>
-        <article> {{username}}</article>
-        <span>Email</span>
-        <article> {{email}}</article>
-        <span>Role </span>
-        <article>{{role}}</article>
-
-        {{!-- {{#if imageUrl}}
-        <img height="200" width="200" src={{imageUrl}} />
-        {{/if}} --}}
 
 
-        <button id="edit-profile" class="black-btn" type="submit">
-            <a href="/auth/{{_id}}/edit">Edit profile</a>
-        </button>
+        <div id="user-profile-div-1">
+
+            <div>
+                <span class="span-bold">Username</span>
+                <span> {{username}}</span>
+            </div>
+
+            <div>
+                <span class="span-bold">Email</span>
+                <span> {{email}}</span>
+            </div>
+
+            <div>
+
+                <span class="span-bold">Role </span>
+                <span>{{role}}</span>
+            </div>
+
+
+            {{!-- {{#if imageUrl}}
+            <img height="200" width="200" src={{imageUrl}} />
+            {{/if}} --}}
+
+
+
+
+
+
+
+            <div>
+                {{#if location}}
+                <span class="span-bold">Location</span>
+                <span>{{location}}</span>
+                {{/if}}
+            </div>
+
+            <div>
+                {{#each interests}}
+                <span class="span-bold">Interests</span>
+                <span>{{this}}</span>
+
+                {{/each}}
+            </div>
+
+            <div>
+                {{#if bio}}
+                <span class="span-bold">Bio</span>
+                <span>{{bio}}</span>
+
+                {{/if}}
+            </div>
+
+
+
+            <button id="edit-profile" class="black-btn" type="submit">
+                <a href="/auth/{{_id}}/edit">Edit profile</a>
+            </button>
+
+
+        </div>
+        <div id="user-profile-div-2">
+
+            <div>
+
+                <img id="profile-blogposts-icon" src="/images/profile-blogposts-icon.png" alt="blogposts-icon">
+                <a id="profile-blogposts-a" href="/blogposts">My Blogposts</a>
+            </div>
+            <div>
+                <img id="profile-favnews-icon" src="/images/profile-news-icon.png" alt="signup-icon">
+                <a id="profile-news-a" href="/news/{{loggedId}}/favorites">My news archive</a>
+            </div>
+
+
+
+
+
+
+
+        </div>
+
     </div>
-    <div id="user-profile-div-2">
-        {{#if location}}
-        <span>Location</span>
-        <article>{{location}}</article>
-        {{/if}}
-
-
-        {{#each interests}}
-        <span>Interests</span>
-        <article>{{this}}</article>
-
-        {{/each}}
-
-
-        {{#if bio}}
-        <span>Bio</span>
-        <article>{{bio}}</article>
-
-        {{/if}}
-
-
-    </div>
-
 </div>

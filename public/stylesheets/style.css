@@ -63,7 +63,7 @@ a {
 
 .nav-link {
   font-family: "Lora";
-  
+
   font-size: 20px;
   line-height: 26px;
   line-height: 100px;
@@ -394,7 +394,7 @@ a {
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
-margin-left: 100px;
+  margin-left: 100px;
 }
 
 
@@ -457,13 +457,17 @@ margin-left: 100px;
 
 /* LOGIN PAGE */
 #login-btn-page {
-  margin: 15px 100px;
-
+  margin: 15px 0px;
 }
 
 
 #sign-up-icon {
   width: 70px;
+}
+
+
+#login-inputs {
+  margin-left: 100px;
 }
 
 
@@ -507,29 +511,51 @@ margin-left: 100px;
 
 #user-profile-div-1,
 #user-profile-div-2 {
-  margin: 100px 0px 0px 100px;
-  display: flex;
+  
+  display: flex; 
   /* border: 1px solid orange; */
   flex-direction: column;
-  width: 300px;
+  width: 500px;
 }
+
 
 #user-profile-div-2 {
-  padding-top: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+#user-profile-div-2 a{
+  text-decoration: none;
+  font-family: "Lora";
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #111111;
+  
 }
 
 
-#user-profile-div-1 h1 {
+#profile-blogposts-a{
+  margin-top: 20px;
+}
+
+
+#profile-news-a {
+  margin-top: 5px;
+}
+
+/* #user-profile-div-1 h1 {
   margin-bottom: 50px;
-}
+} */
+
+
+
 
 .span-bold,
 .user-profile-div label {
   font-weight: bold;
   /* border: 1px solid salmon; */
   width: 200px;
-  
-  
 }
 
 
@@ -537,9 +563,21 @@ margin-left: 100px;
 .user-profile-div span {
   /* border: 1px solid yellow; */
   width: 200px;
-  
-  
 }
+
+
+
+#profile-blogposts-icon {
+  width: 70px;
+}
+
+
+#profile-favnews-icon {
+  width: 50px;
+}
+
+
+
 
 
 
@@ -551,8 +589,7 @@ margin-left: 100px;
   margin: 70px 0px 0px 100px;
 }
 
-.user-profile-div div{
-  
+.user-profile-div div {
   display: flex;
   align-content: flex-start;
   /* border: 1px solid plum; */
@@ -561,14 +598,13 @@ margin-left: 100px;
 
 
 
-.user-profile-div h1{
+.user-profile-div h1 {
   margin-bottom: 50px;
 }
 
 
 
-.input-edit
- {
+.input-edit {
   border: 1px solid rgba(0, 0, 0, 0.5);
   width: 500px;
   height: 40px;
@@ -584,9 +620,10 @@ margin-left: 100px;
 }
 
 
-#edit-profile-icon{
+#edit-profile-icon,
+#profile-icon {
   /* border: 1px solid red; */
-   height: 100px;
+  height: 100px;
 }
 
 
