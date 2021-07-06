@@ -101,7 +101,7 @@ app.use('/', auth);
 const news = require('./routes/news');
 app.use('/', news);
 
-//Writter routes
+//Writer routes
 const writter = require('./routes/writter');
 app.use('/', writter);
 

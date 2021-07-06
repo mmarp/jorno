@@ -14,9 +14,23 @@
                 <li class="nav-item">
                     <a class="nav-link" href="/news">News</a>
                 </li>
+
+
+                {{#if writter}}
                 <li class="nav-item">
                     <a class="nav-link" href="/create-blogpost">Write</a>
                 </li>
+                {{/if}}
+                
+                
+                {{#if editor}}
+                <li class="nav-item">
+                    <a class="nav-link" href="/find-blogpost">Find</a>
+                </li>
+                {{/if}}
+
+
+
                 <li class="nav-item">
                     <a class="nav-link" href="/auth/{{loggedId}}">Profile</a>
                 </li>

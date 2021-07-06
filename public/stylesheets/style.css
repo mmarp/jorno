@@ -331,11 +331,15 @@ a {
   text-align: center;
 }
 
-#news-search-icon,
-#news-fav-icon {
+#news-search-icon {
   /* border: 1px solid pink; */
   height: 150px;
   padding: 50px 50px 0px;
+}
+
+#news-fav-icon{
+height: 150px;
+padding: 50px 70px 0px;
 }
 
 
@@ -517,6 +521,7 @@ a {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  z-index: 9999999;
 }
 
 

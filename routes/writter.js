@@ -32,7 +32,7 @@ function requireLogin(req, res, next) {
 
 
 
-
+//ROLE AS WRITER
 function requireWritter(req, res, next) {
     if (req.session.currentUser &&
         req.session.currentUser.role === 'writter') {
@@ -43,7 +43,22 @@ function requireWritter(req, res, next) {
 }
 
 
-//TEST!!!
+
+//ROLE AS EDITOR
+function requireEditor(req, res, next) {
+    if (req.session.currentUser &&
+        req.session.currentUser.role === 'editor') {
+        next();
+    } else {
+        res.redirect('/login');
+    }
+}
+
+
+
+
+
+//WRITER - SEE OWN BLOGPOSTS 
 router.get('/blogposts', async (req, res) => {
     const blogpostsFromDB = await Blogpost.find({
         user: req.session.currentUser
@@ -54,6 +69,10 @@ router.get('/blogposts', async (req, res) => {
         blogpostsFromDB
     });
 });
+
+
+
+
 
 //to find things from the current logged user
 // Blogpost.find({ user: req.session.currentUser })
@@ -147,6 +166,43 @@ router.post('/blogposts/:blogpostId/delete', async (req, res) => {
 
 
 
+//EDITOR FIND BLOGPOSTS
+router.get('/find-blogpost', requireEditor, requireLogin, async (req, res) => {
+    const blogpostsFromDB = await Blogpost.find().sort({
+        title: 1
+    });
+    res.render('blogposts/blogpost-find', {blogpostsFromDB});
+});
+
+
+
+//EDITOR SEARCH FOR SPECIFIC BLOGPOSTS - SEARCH KEYWORDS
+router.get('/blogpost-search', requireEditor, requireLogin, async (req, res) => {
+    const {keywords} = req.query;
+    
+    const blogpostsFromDB = await Blogpost.find({
+            keywords: {
+                $regex: '.*' + keywords + '.*',
+                $options: 'i'
+            }
+        }).sort({
+        title: 1
+    });
+    console.log(blogpostsFromDB.keywords);
+    res.render('blogposts/blogpost-find', {
+        blogpostsFromDB
+    });
+});
+
+
+
+
+
+
+
+
+
+
 
 //News favorites
 router.post("/news/favorites/:query/add", async (req, res) => {
@@ -164,15 +220,9 @@ router.post("/news/favorites/:query/add", async (req, res) => {
         }
     });
 
-
     // const reqQuery = req.query.q;
     res.redirect(`/news-search?q=${req.params.query}`);
 });
-
-
-
-
-
 
 
 
@@ -183,10 +233,41 @@ router.get('/news/:userId/favorites', async (req, res) => {
     const userDetail = await User.findById(req.params.userId);
 
     const newsFavorites = userDetail.favorites;
+if (req.session.currentUser.role === "writter") {
+    const writter = true;
+     res.render('news/news-favorites', {
+         newsFavorites, writter
+     });
+} else if (req.session.currentUser.role === "editor"){
+    const editor = true;
     res.render('news/news-favorites', {
-        newsFavorites
+        newsFavorites,
+        editor
     });
+} else {
+res.render('news/news-favorites', {
+    newsFavorites
 });
+}
+    
+});
+
+
+
+//PREVIOUS WORKING FAVORITES CODE
+// router.get('/news/:userId/favorites', async (req, res) => {
+//     const userDetail = await User.findById(req.params.userId);
+
+//     const newsFavorites = userDetail.favorites;
+
+
+
+
+    
+//     res.render('news/news-favorites', {
+//         newsFavorites
+//     });
+// });
 
 
 

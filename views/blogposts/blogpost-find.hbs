@@ -15,18 +15,18 @@
                     <a class="nav-link" href="/news">News</a>
                 </li>
 
-                {{#if writter}}
+                {{!-- {{#if writter}}
                 <li class="nav-item">
                     <a class="nav-link" href="/create-blogpost">Write</a>
                 </li>
-                {{/if}}
+                {{/if}} --}}
 
 
-                {{#if editor}}
+                
                 <li class="nav-item">
                     <a class="nav-link" href="/find-blogpost">Find</a>
                 </li>
-                {{/if}}
+                
 
 
                 <li class="nav-item">
@@ -56,32 +56,55 @@
 </nav>
 
 
-{{!-- IMAGE REFERENCE BACKGROUND --}}
-<div id="news-background">
+
+<h1>Blogpost find</h1>
+
+<div id="news-search-div">
+    <form action="/blogpost-search" method="GET">
+        {{!-- enctype multipart lets me insert images --}}
+
+        <label></label>
+        <input id="search-bar-page-2" type="text" name="keywords" placeholder="Search" />
 
 
+        <button id="search-btn-2-page" type="submit"><i class="fas fa-search"></i></button>
 
-    <img id="sketch-icon" src="/images/sketch-icon.jpg" alt="sketch-icon">
-    <h1 id="h1-news">... get inspired. We have the stories. Like<br>thousands of them, from trusted sources.</h1>
-
-    {{!-- to work /news --}}
-    <div id="search-main-div">
-
-
-        <form action="/news-search" method="GET">
-            {{!-- enctype multipart lets me insert images --}}
-
-            {{!-- <label></label> --}}
-            <input id="search-bar" type="text" name="q" placeholder="What are you looking for?" />
-
-            <div>
-                <button class="black-btn" type="submit">Search</button>
-            </div>
-
-
-        </form>
-
-    </div>
-
-
+    </form>
 </div>
+
+
+
+
+
+
+
+
+{{#each blogpostsFromDB }}
+<section id="blog-item-in-list">
+    <div id="article-head">
+        <a id="title-style" href="/blogposts/{{_id}}">
+            <p>{{title}}</p>
+        </a>
+        <p class="blog-description">{{description}}</p>
+        <section id="horizontal-over-content">
+            <div class="byline-author-img"></div>
+            <div id="blog-author-info">
+                {{author}}
+                {{publishedAt}}<p> | 5 min</p>
+            </div>
+            <div id="string-of-icons">
+                <a href="https://twitter.com/intent/tweet"><img class="SoMe-icon" src=""></a>
+                <a href=""><img class="SoMe-icon" src=""></a>
+                <a href=""><img class="SoMe-icon" src=""></a>
+                <a href=""><img class="SoMe-icon" src=""></a>
+            </div>
+        </section>
+    </div>
+    <br>
+    <div id="article-content">
+        {{{content}}}
+    </div>
+    
+    <br>
+</section>
+{{/each}}

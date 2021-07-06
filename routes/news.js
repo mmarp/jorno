@@ -38,7 +38,20 @@ router.get('/news/:query', async (req, res) => {
 
 //router to news
 router.get('/news', (req, res) => {
-    res.render('news/news');
+    console.log(req.session.currentUser.role);
+    if (req.session.currentUser.role === "writter") {
+        const writter = true;
+        res.render('news/news', {
+            writter
+        });
+    } else if (req.session.currentUser.role === "editor") {
+        const editor = true;
+        res.render('news/news', {
+            editor
+        });
+    } else {
+        res.render('news/news');
+    }
 });
 
 
@@ -58,10 +71,51 @@ router.get('/news-search', async (req, res) => {
     });
 
     const articles = response.articles;
-    res.render('news/news-search-results', {
-        articles, q
-    });
+
+
+    if (req.session.currentUser.role === "writter") {
+        const writter = true;
+        res.render('news/news-search-results', {
+            articles,
+            q,
+            writter
+        });
+    } else if (req.session.currentUser.role === "editor") {
+        const editor = true;
+        res.render('news/news-search-results', {
+            articles,
+            q,
+            editor
+        });
+    } else {
+        res.render('news/news-search-results', {
+            articles,
+            q
+        });
+    }
 });
+
+
+//PREVIOUS CODE
+// router.get('/news-search', async (req, res) => {
+//     const q = req.query.q;
+//     const response = await newsapi.v2.everything({
+//         q: q,
+// sources: 'bbc-news,the-verge',
+// domains: 'bbc.co.uk, techcrunch.com',
+// from: '2021-06-03',
+// to: '2021-07-02',
+//         language: 'en',
+//         sortBy: 'relevancy',
+//         page: 4
+//     });
+
+//     const articles = response.articles;
+//     res.render('news/news-search-results', {
+//         articles,
+//         q
+//     });
+// });
 
 
 
@@ -101,28 +155,6 @@ router.get('/news-search', async (req, res) => {
 
 
 //ADDING TO FAVORITES
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 module.exports = router; //always the last line

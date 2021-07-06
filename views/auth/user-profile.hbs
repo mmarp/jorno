@@ -14,12 +14,28 @@
                 <li class="nav-item">
                     <a class="nav-link" href="/news">News</a>
                 </li>
+
+
+                {{#if writter}}
                 <li class="nav-item">
                     <a class="nav-link" href="/create-blogpost">Write</a>
                 </li>
+                {{/if}}
+                
+                
+                {{#if editor}}
+                <li class="nav-item">
+                    <a class="nav-link" href="/find-blogpost">Find</a>
+                </li>
+                {{/if}}
+
+
                 <li class="nav-item">
                     <a class="nav-link" href="/auth/{{loggedId}}">Profile</a>
                 </li>
+
+
+
                 <li>
                     <form action="/logout" method="POST">
                         <button id="logout-btn" type="submit">Logout</button>
@@ -43,18 +59,18 @@
 
             <div>
                 <span class="span-bold">Username</span>
-                <span> {{username}}</span>
+                <span> {{userProfile.username}}</span>
             </div>
 
             <div>
                 <span class="span-bold">Email</span>
-                <span> {{email}}</span>
+                <span> {{userProfile.email}}</span>
             </div>
 
             <div>
 
                 <span class="span-bold">Role </span>
-                <span>{{role}}</span>
+                <span>{{userProfile.role}}</span>
             </div>
 
 
@@ -69,14 +85,14 @@
 
 
             <div>
-                {{#if location}}
+                {{#if userProfile.location}}
                 <span class="span-bold">Location</span>
-                <span>{{location}}</span>
+                <span>{{userProfile.location}}</span>
                 {{/if}}
             </div>
 
             <div>
-                {{#each interests}}
+                {{#each userProfile.interests}}
                 <span class="span-bold">Interests</span>
                 <span>{{this}}</span>
 
@@ -86,7 +102,7 @@
             <div>
                 {{#if bio}}
                 <span class="span-bold">Bio</span>
-                <span>{{bio}}</span>
+                <span>{{userProfile.bio}}</span>
 
                 {{/if}}
             </div>
@@ -94,18 +110,31 @@
 
 
             <button id="edit-profile" class="black-btn" type="submit">
-                <a href="/auth/{{_id}}/edit">Edit profile</a>
+                <a href="/auth/{{userProfile._id}}/edit">Edit profile</a>
             </button>
 
 
         </div>
         <div id="user-profile-div-2">
 
+            {{#if writter}}
             <div>
-
                 <img id="profile-blogposts-icon" src="/images/profile-blogposts-icon.png" alt="blogposts-icon">
                 <a id="profile-blogposts-a" href="/blogposts">My Blogposts</a>
             </div>
+            {{/if}}
+
+
+            {{#if editor}}
+            <div>
+                <img id="profile-blogposts-icon" src="/images/profile-blogposts-icon.png" alt="blogposts-icon">
+                <a id="profile-blogposts-a" href="/blogposts">Blogposts archive</a>
+            </div>
+            {{/if}}
+            
+
+
+            
             <div>
                 <img id="profile-favnews-icon" src="/images/profile-news-icon.png" alt="signup-icon">
                 <a id="profile-news-a" href="/news/{{loggedId}}/favorites">News archive</a>

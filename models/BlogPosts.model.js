@@ -10,7 +10,7 @@ const BlogPostsSchema = new Schema({
     description: String,
     publishedAt: Date,
     content: String,
-    keywords: Array,
+    keywords: String,
     user: {
         type: Schema.Types.ObjectId,
         ref: "User",

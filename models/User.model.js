@@ -28,6 +28,7 @@ const userSchema = new Schema({
     title: String,
     url: String,
   }],
+  favoritesBlogpost: Array,
 });
 
 const User = model("User", userSchema);

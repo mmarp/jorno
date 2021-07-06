@@ -14,6 +14,18 @@ const fileUpload = require('../config/cloudinary');
 
 
 
+
+
+function requireLogin(req, res, next) {
+    if (req.session.currentUser) {
+        next();
+    } else {
+        res.redirect('/login');
+    }
+}
+
+
+
 router.get('/signup', (req, res) => {
     res.render('auth/signup');
 });
@@ -26,7 +38,7 @@ router.get('/signup', (req, res) => {
 
 
 router.post('/signup', fileUpload.single('image'), async (req, res) => {
-    
+
 
     let fileUrlOnCloudinary = ""; //like this, if there is an error the file won't break
     if (req.file) {
@@ -86,7 +98,6 @@ router.post('/signup', fileUpload.single('image'), async (req, res) => {
         interests,
         bio,
     });
-    
     res.redirect('/login');
 });
 
@@ -150,30 +161,105 @@ router.post("/login", async (req, res) => {
 
 
 
-
+//TO DELETE????
 router.get('/users', async (req, res) => {
-const usersFromDB = await User.find();
-    res.render('auth/users', {usersFromDB});
-});
-
-
-router.get('/auth/:userId', async (req, res) => {
-const userProfile = await User.findById(req.params.userId);
-res.render('auth/user-profile', userProfile);
-});
-
-
-
-
-
-
-router.get('/auth/:userId/edit', async (req, res) => {
-    const userToEdit = await User.findById(req.params.userId);
-    console.log(userToEdit);
-    res.render('auth/user-edit', {
-        userToEdit,
+    const usersFromDB = await User.find();
+    res.render('auth/users', {
+        usersFromDB
     });
 });
+
+
+
+
+
+router.get('/news', (req, res) => {
+    console.log(req.session.currentUser.role);
+    if (req.session.currentUser.role === "writter") {
+        const writter = true;
+        res.render('news/news', {
+            writter
+        });
+    } else if (req.session.currentUser.role === "editor") {
+        const editor = true;
+        res.render('news/news', {
+            editor
+        });
+    } else {
+        res.render('news/news');
+    }
+});
+
+
+router.get('/auth/:userId', requireLogin, async (req, res) => {
+    const userProfile = await User.findById(req.params.userId);
+    if (req.session.currentUser.role === "writter") {
+        const writter = true;
+        res.render('auth/user-profile', {
+            userProfile,
+            writter
+        });
+    } else if (req.session.currentUser.role === "editor") {
+        const editor = true;
+        res.render('auth/user-profile', {
+            userProfile,
+            editor
+        });
+    } else {
+        res.render('auth/user-profile', {
+            userProfile
+        });
+    }
+});
+
+
+
+
+//PREVIOUS WORKING CODE - USER PROFILE
+// router.get('/auth/:userId', async (req, res) => {
+//     const userProfile = await User.findById(req.params.userId);
+//     res.render('auth/user-profile', userProfile);
+// });
+
+
+
+
+
+router.get('/auth/:userId/edit', requireLogin, async (req, res) => {
+    const userToEdit = await User.findById(req.params.userId);
+    console.log(userToEdit);
+    if (req.session.currentUser.role === "writter") {
+        const writter = true;
+        res.render('auth/user-edit', {
+            userToEdit,
+            writter
+        });
+    } else if (req.session.currentUser.role === "editor") {
+        const editor = true;
+        res.render('auth/user-edit', {
+            userToEdit,
+            editor
+        });
+    } else {
+        res.render('auth/user-edit', {
+            userToEdit,
+        });
+    }
+});
+
+
+
+
+
+
+//PREVIOUS WORKING CODE
+// router.get('/auth/:userId/edit', async (req, res) => {
+//     const userToEdit = await User.findById(req.params.userId);
+//     console.log(userToEdit);
+//     res.render('auth/user-edit', {
+//         userToEdit,
+//     });
+// });
 
 
 router.post('/auth/:userId/edit', async (req, res) => {
@@ -183,9 +269,9 @@ router.post('/auth/:userId/edit', async (req, res) => {
         bio,
     } = req.body;
     await User.findByIdAndUpdate(req.params.userId, {
-         location,
-         interests,
-         bio,
+        location,
+        interests,
+        bio,
     });
     console.log(req.body);
     res.redirect('/user-profile');
@@ -204,7 +290,7 @@ router.post('/auth/:userId/edit', async (req, res) => {
 //User profile
 router.get('/user-profile', async (req, res) => {
     const userProfile = await User.findById(req.session.currentUser._id);
-    res.render('auth/user-profile', 
+    res.render('auth/user-profile',
         userProfile
     );
 });
