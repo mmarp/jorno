@@ -28,8 +28,12 @@ const userSchema = new Schema({
     title: String,
     url: String,
   }],
-  favoritesBlogpost: Array,
+  favoritesBlogpost: [{
+    type: Schema.Types.ObjectId, //reference to the author schema
+    ref: 'Blogpost',
+  }]
 });
+
 
 const User = model("User", userSchema);
 

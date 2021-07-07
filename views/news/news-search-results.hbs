@@ -18,8 +18,8 @@
                     <a class="nav-link" href="/create-blogpost">Write</a>
                 </li>
                 {{/if}}
-                
-                
+
+
                 {{#if editor}}
                 <li class="nav-item">
                     <a class="nav-link" href="/find-blogpost">Find</a>
@@ -109,10 +109,10 @@
             <form action="/news/favorites/{{../q}}/add" method="POST">
                 <input class="input-to-hide" type="text" name="title" value="{{title}}" />
                 <input class="input-to-hide" type="text" name="url" value="{{url}}" />
-                <button class="favorite-btn" type="submit"><img id="favorites-icon" src="/images/favorites.png" alt="favorites-icon">
-                    {{!-- <i class="fas fa-folder-plus"> <i
-                            class="far fa-bookmark"></i></i> --}}
-                            </button>
+                <button class="favorite-btn" type="submit"><img id="favorites-icon" src="/images/favorites.png"
+                        alt="favorites-icon">
+                    {{!-- <i class="fas fa-folder-plus"> <i class="far fa-bookmark"></i></i> --}}
+                </button>
 
             </form>
 

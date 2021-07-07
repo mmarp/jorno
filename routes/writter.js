@@ -15,6 +15,9 @@ const fileUpload = require('../config/cloudinary');
 
 //NewsAPI
 const NewsAPI = require('newsapi');
+const {
+    listen
+} = require('../app');
 const newsapi = new NewsAPI('444c96d4ece448f6b81ee0ab9726c76b');
 
 
@@ -59,7 +62,7 @@ function requireEditor(req, res, next) {
 
 
 //WRITER - SEE OWN BLOGPOSTS 
-router.get('/blogposts', async (req, res) => {
+router.get('/blogposts', requireLogin, async (req, res) => {
     const blogpostsFromDB = await Blogpost.find({
         user: req.session.currentUser
     }).sort({
@@ -81,10 +84,65 @@ router.get('/blogposts', async (req, res) => {
 
 //Gets the detail of a blogpost by using blogpostsId
 //http://localhost:3000/blogposts/25342534623
-router.get('/blogposts/:blogpostId', async (req, res) => {
+router.get('/blogposts/:blogpostId', requireLogin, async (req, res) => {
+    //
+    const userDetail = await User.findById(req.session.currentUser._id);
+
+
     const blogpostDetail = await Blogpost.findById(req.params.blogpostId);
-    res.render('blogposts/blogpost-detail', blogpostDetail);
+
+    //
+    let bFavorite = false;
+    for (let i = 0; i < userDetail.favoritesBlogpost.length; i++) {
+        console.log('CHECANDO!!!! ', req.params.blogpostId, userDetail.favoritesBlogpost[i]);
+        if (userDetail.favoritesBlogpost[i] == req.params.blogpostId) {
+            bFavorite = true;
+            console.log('CHECANDO BFAVEEEE ', bFavorite);
+        }
+    }
+
+
+
+    if (req.session.currentUser.role === "writter") {
+        const writter = true;
+        res.render('blogposts/blogpost-detail', {
+            blogpostDetail,
+            writter
+        });
+
+    } else if (req.session.currentUser.role === "editor") {
+        const editor = true;
+        if (bFavorite) {
+            console.log('CHECANDO SE ENTROU NO IF ')
+            res.render('blogposts/blogpost-detail', {
+                blogpostDetail,
+                editor,
+                bFavorite,
+                userDetail
+            });
+        } else {
+            res.render('blogposts/blogpost-detail', {
+                blogpostDetail,
+                editor,
+            });
+        }
+
+    } else {
+        res.render('blogposts/blogpost-detail', {
+            blogpostDetail
+        });
+    }
+
 });
+
+
+
+//PREVIOUS WORKING CODE
+// router.get('/blogposts/:blogpostId', async (req, res) => {
+//     const blogpostDetail = await Blogpost.findById(req.params.blogpostId);
+//     res.render('blogposts/blogpost-detail', blogpostDetail);
+// });
+
 
 
 
@@ -171,21 +229,25 @@ router.get('/find-blogpost', requireEditor, requireLogin, async (req, res) => {
     const blogpostsFromDB = await Blogpost.find().sort({
         title: 1
     });
-    res.render('blogposts/blogpost-find', {blogpostsFromDB});
+    res.render('blogposts/blogpost-find', {
+        blogpostsFromDB
+    });
 });
 
 
 
 //EDITOR SEARCH FOR SPECIFIC BLOGPOSTS - SEARCH KEYWORDS
 router.get('/blogpost-search', requireEditor, requireLogin, async (req, res) => {
-    const {keywords} = req.query;
-    
+    const {
+        keywords
+    } = req.query;
+
     const blogpostsFromDB = await Blogpost.find({
-            keywords: {
-                $regex: '.*' + keywords + '.*',
-                $options: 'i'
-            }
-        }).sort({
+        keywords: {
+            $regex: '.*' + keywords + '.*',
+            $options: 'i'
+        }
+    }).sort({
         title: 1
     });
     console.log(blogpostsFromDB.keywords);
@@ -196,7 +258,57 @@ router.get('/blogpost-search', requireEditor, requireLogin, async (req, res) => 
 
 
 
+//SAVING BLOGPOST AS FAVORITE
+router.post("/blogposts/:blogpostId", requireLogin, requireEditor, async (req, res) => {
+    console.log("HEREEEEEE", req.session.currentUser._id);
+    const blogpostsFavorite = await Blogpost.findById(req.params.blogpostId);
+    console.log(blogpostsFavorite.title);
+    await User.findByIdAndUpdate(req.session.currentUser._id, {
+        $push: {
+            favoritesBlogpost: blogpostsFavorite
+        }
+    });
 
+    // const reqQuery = req.query.q;
+    res.redirect(`/blogposts/${blogpostsFavorite._id}`);
+});
+
+
+
+
+//ADDING A SAVED FAVORITE BLOGPOST
+router.get('/blogposts/:userId/favorites', requireEditor, async (req, res) => {
+    const userDetail = await User.findById(req.params.userId);
+    const blogpostsFavorites = userDetail.favoritesBlogpost;
+    let newArray = [];
+    for (let i = 0; i < blogpostsFavorites.length; i++) {
+        const findBlogpost = await Blogpost.findOne(blogpostsFavorites[i]);
+        newArray.push(findBlogpost);
+    }
+    console.log("CHECK NEW ARRAY HERE", newArray);
+    res.render('blogposts/blogposts-favorites', {
+        newArray
+    });
+});
+
+
+
+
+//DELETING A SAVED FAVORITE BLOGPOST
+router.post("/blogposts/favorites/:blogpostId/delete", requireLogin, requireEditor, async (req, res) => {
+    console.log("HEYA", req.session.currentUser._id);
+    const blogpostsFavorite = await Blogpost.findById(req.params.blogpostId);
+
+    await User.findByIdAndUpdate(req.session.currentUser._id, {
+        
+        $pull: {
+            favoritesBlogpost: req.params.blogpostId
+        }
+    });
+console.log("ARE YOU?", req.params.blogpostId);
+    // const reqQuery = req.query.q;
+    res.redirect(`/blogposts/${req.session.currentUser._id}/favorites`);
+});
 
 
 
@@ -233,23 +345,24 @@ router.get('/news/:userId/favorites', async (req, res) => {
     const userDetail = await User.findById(req.params.userId);
 
     const newsFavorites = userDetail.favorites;
-if (req.session.currentUser.role === "writter") {
-    const writter = true;
-     res.render('news/news-favorites', {
-         newsFavorites, writter
-     });
-} else if (req.session.currentUser.role === "editor"){
-    const editor = true;
-    res.render('news/news-favorites', {
-        newsFavorites,
-        editor
-    });
-} else {
-res.render('news/news-favorites', {
-    newsFavorites
-});
-}
-    
+    if (req.session.currentUser.role === "writter") {
+        const writter = true;
+        res.render('news/news-favorites', {
+            newsFavorites,
+            writter
+        });
+    } else if (req.session.currentUser.role === "editor") {
+        const editor = true;
+        res.render('news/news-favorites', {
+            newsFavorites,
+            editor
+        });
+    } else {
+        res.render('news/news-favorites', {
+            newsFavorites
+        });
+    }
+
 });
 
 
@@ -263,7 +376,7 @@ res.render('news/news-favorites', {
 
 
 
-    
+
 //     res.render('news/news-favorites', {
 //         newsFavorites
 //     });
@@ -278,7 +391,7 @@ res.render('news/news-favorites', {
 
 
 
-router.post("/news/favorites/:newsId/delete", async (req, res) => {    
+router.post("/news/favorites/:newsId/delete", async (req, res) => {
     await User.findByIdAndUpdate(req.session.currentUser._id, {
         $pull: {
             favorites: {

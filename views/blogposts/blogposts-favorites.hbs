@@ -15,18 +15,10 @@
                     <a class="nav-link" href="/news">News</a>
                 </li>
 
-                {{#if writter}}
-                <li class="nav-item">
-                    <a class="nav-link" href="/create-blogpost">Write</a>
-                </li>
-                {{/if}}
 
-
-                {{#if editor}}
                 <li class="nav-item">
                     <a class="nav-link" href="/find-blogpost">Find</a>
                 </li>
-                {{/if}}
 
 
                 <li class="nav-item">
@@ -56,39 +48,58 @@
 </nav>
 
 
-<h1>{{blogpostDetail.title}}</h1>
-<p>Author: {{blogpostDetail.author}}</p>
-<p>description: {{blogpostDetail.description}}</p>
-<p>Published: {{blogpostDetail.publishedAt}}</p>
-<p>Content:{{{blogpostDetail.content}}}</p>
+
+<h1>Blogposts favorites</h1>
+<div id="news-search-div">
+    <form action="/blogpost-search" method="GET">
+        {{!-- enctype multipart lets me insert images --}}
+
+        <label></label>
+        <input id="search-bar-page-2" type="text" name="keywords" placeholder="Search" />
 
 
-<p>Keywords:{{blogpostDetail.keywords}}</p>
+        <button id="search-btn-2-page" type="submit"><i class="fas fa-search"></i></button>
 
-{{#if writter}}
-<a href="/blogposts/{{blogpostDetail._id}}/edit">Edit blogpost</a>
-{{/if}}
-
-</form>
-<hr>
+    </form>
+</div>
 
 
-{{#if editor}}
-{{#unless bFavorite}}
-<form action="/blogposts/{{blogpostDetail._id}}" method="POST">
-    <button class="favorite-btn" type="submit"><img id="favorites-icon" src="/images/favorites-blogposts.png"
-            alt="favorites-blogposts-icon">
-        {{!-- <i class="fas fa-folder-plus"> <i class="far fa-bookmark"></i></i> --}}
-    </button>
-</form>
-{{/unless}}
 
-{{#if bFavorite}}
-<form action="/blogposts/favorites/{{blogpostDetail._id}}/delete" method="POST">
-    <button class="favorite-btn" type="submit"><img id="delete-icon" src="/images/delete.png"
-            alt="detele-icon"></button>
-</form>
-{{/if}}
 
-{{/if}}
 
+
+
+
+{{#each newArray }}
+<section id="blog-item-in-list">
+    <div id="article-head">
+        <a id="title-style" href="/blogposts/{{_id}}">
+            <p>{{title}}</p>
+        </a>
+        <p class="blog-description">{{description}}</p>
+        <section id="horizontal-over-content">
+            <div class="byline-author-img"></div>
+            <div id="blog-author-info">
+                {{author}}
+                {{publishedAt}}<p> | 5 min</p>
+            </div>
+            <div id="string-of-icons">
+                <a href="https://twitter.com/intent/tweet"><img class="SoMe-icon" src=""></a>
+                <a href=""><img class="SoMe-icon" src=""></a>
+                <a href=""><img class="SoMe-icon" src=""></a>
+                <a href=""><img class="SoMe-icon" src=""></a>
+            </div>
+        </section>
+    </div>
+    <br>
+    <div id="article-content">
+        {{{content}}}
+    </div>
+
+
+    <br>
+
+
+
+</section>
+{{/each}}
