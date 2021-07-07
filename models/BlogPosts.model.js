@@ -8,7 +8,7 @@ const BlogPostsSchema = new Schema({
     author: String,
     title: String,
     description: String,
-    publishedAt: Date,
+    publishedAt: String,
     content: String,
     keywords: String,
     user: {
@@ -18,8 +18,6 @@ const BlogPostsSchema = new Schema({
 }, {
     timestamps: true,
 });
-
-
 
 
 

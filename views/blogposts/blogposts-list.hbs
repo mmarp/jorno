@@ -90,7 +90,12 @@
 
 
 
-{{#each blogpostsFromDB }}
+
+
+
+
+{{!-- PREVIOUS WORKING CODE --}}
+{{!-- {{#each blogpostsFromDB }}
 <section id="blog-item-in-list">
     <div id="article-head">
         <a id="title-style" href="/blogposts/{{_id}}">
@@ -120,8 +125,48 @@
     </form>
     <br>
 </section>
-{{/each}}
+{{/each}} --}}
 
+
+
+
+
+{{#each blogpostsFromDB }}
+<section id="blog-item-in-list">
+    <div id="article-head">
+        <a id="title-style" href="/blogposts/{{_id}}">
+            <p>{{title}}</p>
+        </a>
+        <p class="blog-description">{{description}}</p>
+        <section id="horizontal-over-content">
+            <img class="byline-author-img" src="{{user.imageUrl}}">
+            <div id="blog-author-info">
+                {{author}} <br>
+                <p>{{publishedAt}} | 5 min</p>
+            </div>
+            <div id="string-of-icons">
+                <a href="https://twitter.com/intent/tweet?url=http%3A%2F%2Flocalhost%3A3000%2Fblogposts&text=" target="_blank"><img
+                        class="SoMe-icons" src="/images/twitter-icon.png"></a>
+                <a href="http://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A3000%2Fblogposts&title="
+                    target="_blank"><img class="SoMe-icons" src="/images/linkdin-icon.png"></a>
+                <a href="https://www.instagram.com" target="_blank"><img class="SoMe-icons" src="/images/ig-icon.png"></a>
+                <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A3000%2Fblogposts"
+                    target="_blank"><img class="SoMe-icons" src="/images/fb-icon.png"></a>
+            </div>
+        </section>
+    </div>
+    <br>
+    <div id="article-content">
+        {{{content}}}
+    </div>
+    <div class="writer-blog-btns">
+        <form action="/blogposts/{{_id}}/delete" method="POST">
+            <button class="black-btn" type="submit">Delete</button>
+        </form>
+    </div>
+    <br>
+</section>
+{{/each}}
 
 
 

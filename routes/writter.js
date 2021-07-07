@@ -67,7 +67,7 @@ router.get('/blogposts', requireLogin, async (req, res) => {
         user: req.session.currentUser
     }).sort({
         title: 1
-    }); //sorts books alphabetically
+    }).populate('user'); //sorts books alphabetically
     res.render('blogposts/blogposts-list', {
         blogpostsFromDB
     });
@@ -170,8 +170,6 @@ router.post('/create-blogpost', async (req, res) => {
         keywords,
         user: req.session.currentUser
     });
-
-
     res.redirect('/blogposts');
 });
 
@@ -331,7 +329,6 @@ router.post("/news/favorites/:query/add", async (req, res) => {
             }
         }
     });
-
     // const reqQuery = req.query.q;
     res.redirect(`/news-search?q=${req.params.query}`);
 });
@@ -400,7 +397,7 @@ router.post("/news/favorites/:newsId/delete", async (req, res) => {
         }
     });
 
-    res.redirect("/news/favorites");
+    res.redirect(`/news/${req.session.currentUser._id}/favorites`);
 });
 
 

@@ -102,14 +102,6 @@ router.post('/signup', fileUpload.single('image'), async (req, res) => {
 });
 
 
-
-
-
-
-
-
-
-
 router.get('/login', (req, res) => {
     res.render('auth/login');
 });
@@ -225,6 +217,40 @@ router.get('/auth/:userId', requireLogin, async (req, res) => {
 
 
 
+
+
+
+router.get('/auth/:userId/edit', requireLogin, async (req, res) => {
+    const userToEdit = await User.findById(req.params.userId);
+    console.log(userToEdit);
+    if (req.session.currentUser.role === "writter") {
+        const writter = true;
+        res.render('auth/edit-user', {
+            userToEdit,
+            writter
+        });
+    } else if (req.session.currentUser.role === "editor") {
+        const editor = true;
+        res.render('auth/edit-user', {
+            userToEdit,
+            editor
+        });
+    } else {
+        res.render('auth/edit-user', {
+            userToEdit,
+        });
+    }
+});
+
+
+
+
+
+
+
+
+
+//PREVIOUS WORKING CODE
 router.get('/auth/:userId/edit', requireLogin, async (req, res) => {
     const userToEdit = await User.findById(req.params.userId);
     console.log(userToEdit);
@@ -262,26 +288,51 @@ router.get('/auth/:userId/edit', requireLogin, async (req, res) => {
 // });
 
 
-router.post('/auth/:userId/edit', async (req, res) => {
+
+
+
+
+
+//IMAGE BEN CODE
+router.post('/auth/:userId/edit', fileUpload.single('image'), async (req, res) => {
+
+    const userID = req.params.userId;
     const {
         location,
-        interests,
         bio,
     } = req.body;
-    await User.findByIdAndUpdate(req.params.userId, {
-        location,
-        interests,
-        bio,
-    });
     console.log(req.body);
-    res.redirect('/user-profile');
+    if (req.file) {
+        await User.findByIdAndUpdate(userID, {
+            location,
+            bio,
+            imageUrl: req.file.path
+        });
+    } else {
+        await User.findByIdAndUpdate(userID, {
+            location,
+            bio,
+        });
+    }
+    res.redirect(`/auth/${userID}`);
 });
 
 
-
-
-
-
+// PREVIOUS WORKING CODE
+// router.post('/auth/:userId/edit', async (req, res) => {
+//     const {
+//         location,
+//         interests,
+//         bio,
+//     } = req.body;
+//     await User.findByIdAndUpdate(req.params.userId, {
+//         location,
+//         interests,
+//         bio,
+//     });
+//     console.log(req.body);
+//     res.redirect('/user-profile');
+// });
 
 
 

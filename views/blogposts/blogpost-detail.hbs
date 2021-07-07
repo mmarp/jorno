@@ -56,20 +56,68 @@
 </nav>
 
 
-<h1>{{blogpostDetail.title}}</h1>
+{{!-- PREVIOUS WORKING CODE --}}
+{{!-- <h1>{{blogpostDetail.title}}</h1>
 <p>Author: {{blogpostDetail.author}}</p>
 <p>description: {{blogpostDetail.description}}</p>
 <p>Published: {{blogpostDetail.publishedAt}}</p>
 <p>Content:{{{blogpostDetail.content}}}</p>
+<p>Keywords:{{blogpostDetail.keywords}}</p> --}}
 
 
-<p>Keywords:{{blogpostDetail.keywords}}</p>
+
+
+
+<section id="blog-item-in-list">
+    <div id="article-head">
+        <p id="title-style">{{blogpostDetail.title}}</p>
+        </a>
+        <p class="blog-description">{{blogpostDetail.description}}</p>
+        <section id="horizontal-over-content">
+            <div class="byline-author-img"></div>
+            <div id="blog-author-info">
+                {{blogpostDetail.author}} <br>
+                <p>{{blogpostDetail.publishedAt}} | 5 min</p>
+            </div>
+            <div id="string-of-icons">
+                <a href="https://twitter.com/intent/tweet?url=http%3A%2F%2Flocalhost%3A3000%2Fblogposts&text=" target="_blank"><img
+                        class="SoMe-icons" src="/images/twitter-icon.png"></a>
+                <a href="http://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A3000%2Fblogposts&title=" target="_blank"><img
+                        class="SoMe-icons" src="/images/linkdin-icon.png"></a>
+                <a href="https://www.instagram.com" target="_blank"><img class="SoMe-icons" src="/images/ig-icon.png"></a>
+                <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A3000%2Fblogposts" target="_blank"><img
+                        class="SoMe-icons" src="/images/fb-icon.png"></a>
+            </div>
+        </section>
+    </div>
+    <br>
+    <div id="article-content">
+        {{{blogpostDetail.content}}}
+        <br>
+        <p id="blog-author-info">Keywords:{{blogpostDetail.keywords}}</p>
+    </div>
+
+    <br>
+    <form action="/blogposts/{{blogpostDetail._id}}/delete" method="POST">
+        <div class="writer-blog-btns">
+            <button class="black-btn" type="submit">Delete</button>
+        </div>
+    </form>
+    <br>
+</section>
+
+
+
+
+
+
+
 
 {{#if writter}}
-<a href="/blogposts/{{blogpostDetail._id}}/edit">Edit blogpost</a>
+<button class="black-btn"><a class="unstyle-link" href="/blogposts/{{blogpostDetail._id}}/edit">Edit</a></button>
 {{/if}}
 
-</form>
+
 <hr>
 
 

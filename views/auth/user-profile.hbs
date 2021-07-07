@@ -48,7 +48,10 @@
 </nav>
 
 <div class="user-profile-div">
-    <img id="profile-icon" src="/images/profile-icon2.png" alt="profile-icon">
+    <img id="profile-icon" src="{{userProfile.imageUrl}}" alt="profile-picture">
+
+    {{!-- PREVIOUS WORKING CODE --}}
+    {{!-- <img id="profile-icon" src="/images/profile-icon2.png" alt="profile-icon"> --}}
     <h1>Profile</h1>
     <div>
 
@@ -100,7 +103,7 @@
             </div>
 
             <div>
-                {{#if bio}}
+                {{#if userProfile.bio}}
                 <span class="span-bold">Bio</span>
                 <span>{{userProfile.bio}}</span>
 
@@ -120,9 +123,11 @@
             {{#if writter}}
             <div>
                 <img id="profile-blogposts-icon" src="/images/profile-blogposts-icon.png" alt="blogposts-icon">
-                <a id="profile-blogposts-a" href="/blogposts/{{userProfile._id}}/favorites">My Blogposts</a>
+                <a id="profile-blogposts-a" href="/blogposts">My Blogposts</a>
             </div>
             {{/if}}
+
+           
 
 
             {{#if editor}}

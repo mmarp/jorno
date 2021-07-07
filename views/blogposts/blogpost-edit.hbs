@@ -82,7 +82,11 @@
 </form> --}}
 
 
-    <h1>Edit blogpost</h1>
+
+
+
+{{!-- PREVIOUS WORKING CODE --}}
+    {{!-- <h1>Edit blogpost</h1>
     <form action="/blogposts/{{blogpostToEdit._id}}/edit" method="POST">
         <label>Author</label>
         <input type="text" name="author" value="{{blogpostToEdit.author}}" />
@@ -97,9 +101,41 @@
         <label>Keywords</label>
         <input type="text" name="keywords" value="{{blogpostToEdit.keywords}}" />
         <button type="submit">Update</button>
+    </form> --}}
+
+
+<div id="body-create-blogpost">
+    <p class="blog-description">Edit post
+    <p>
+    <form action="/blogposts/{{blogpostToEdit._id}}/edit" method="POST">
+        <br>
+        <br>
+        <textarea id="myEditor" name="content">{{blogpostToEdit.content}}</textarea>
+        <section id="horizontal_blogpost_alignment">
+            <div id="leftside_blogpost">
+                {{!-- <label>What will you be writing today?</label>
+                <input type="text" name="typeOfBlog" /> --}}
+                {{!-- <label>...directed to which publisher(s)?</label>
+                <input type="text" name="choosenPublishers" /> --}}
+                <label>What's the main keywords?</label>
+                <input type="text" name="keywords" value="{{blogpostToEdit.keywords}}" />
+                <label>Date</label>
+                <input type="text" name="publishedAt" value="{{blogpostToEdit.publishedAt}}" />
+            </div>
+            <div id="rightside_blogpost">
+                <label>Providing a title and rubric is a science... Go ahead anyway.</label>
+                <input type="text" name="title" value="{{blogpostToEdit.title}}" />
+                <label></label>
+                <textarea name="description">{{blogpostToEdit.description}}</textarea>
+                <label>Author</label>
+                <input type="text" name="author" value="{{blogpostToEdit.author}}" />
+            </div>
+        </section>
+        <br>
+        <button id="create-blogpost-btn" type="submit">Update</button>
     </form>
 
-
+</div>
 
 
 

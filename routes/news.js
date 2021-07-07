@@ -138,8 +138,6 @@ router.get('/news-search', async (req, res) => {
 // });
 
 
-
-
 // app.get('/albums/:artistId', async (req, res, next) => {
 
 //     let albumResults = await spotifyWebAPI.getArtistAlbums(req.params.artistId); //params - hoevering on a link
