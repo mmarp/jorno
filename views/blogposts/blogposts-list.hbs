@@ -61,7 +61,7 @@
         <button type="submit">Delete</button>
     </form>
 
-    
+
 
 </div>
 <br><br>
@@ -127,8 +127,8 @@
 </section>
 {{/each}} --}}
 
-
-
+<img id="blogpost-fav-icon" src="/images/profile-blogposts-icon.png" alt="profile-blogposts-icon">
+{{!-- <h1 class="h1-blogposts-archive">My Blogposts</h1> --}}
 
 
 {{#each blogpostsFromDB }}
@@ -142,31 +142,33 @@
             <img class="byline-author-img" src="{{user.imageUrl}}">
             <div id="blog-author-info">
                 {{author}} <br>
-                <p>{{publishedAt}} | 5 min</p>
+                <p>{{publishedAt}}</p>
             </div>
             <div id="string-of-icons">
-                <a href="https://twitter.com/intent/tweet?url=http%3A%2F%2Flocalhost%3A3000%2Fblogposts&text=" target="_blank"><img
-                        class="SoMe-icons" src="/images/twitter-icon.png"></a>
+                <a href="https://twitter.com/intent/tweet?url=http%3A%2F%2Flocalhost%3A3000%2Fblogposts&text="
+                    target="_blank"><img class="SoMe-icons" src="/images/twitter-icon.png"></a>
                 <a href="http://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A3000%2Fblogposts&title="
                     target="_blank"><img class="SoMe-icons" src="/images/linkdin-icon.png"></a>
-                <a href="https://www.instagram.com" target="_blank"><img class="SoMe-icons" src="/images/ig-icon.png"></a>
+                <a href="https://www.instagram.com" target="_blank"><img class="SoMe-icons"
+                        src="/images/ig-icon.png"></a>
                 <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A3000%2Fblogposts"
                     target="_blank"><img class="SoMe-icons" src="/images/fb-icon.png"></a>
             </div>
         </section>
     </div>
     <br>
-    <div id="article-content">
+    {{!-- <div id="article-content">
         {{{content}}}
-    </div>
-    <div class="writer-blog-btns">
+    </div> --}}
+
+
+    <div id="separation-line-blogpostlist"></div>
+
+    {{!-- <div class="writer-blog-btns">
         <form action="/blogposts/{{_id}}/delete" method="POST">
             <button class="black-btn" type="submit">Delete</button>
         </form>
-    </div>
+    </div> --}}
     <br>
 </section>
 {{/each}}
-
-
-

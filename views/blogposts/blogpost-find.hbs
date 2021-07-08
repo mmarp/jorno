@@ -57,18 +57,14 @@
 
 
 
-<h1>Blogpost find</h1>
+{{!-- <h1>...find any article</h1> --}}
 
-<div id="news-search-div">
+<div id="blogpost-search-div">
     <form action="/blogpost-search" method="GET">
         {{!-- enctype multipart lets me insert images --}}
-
         <label></label>
-        <input id="search-bar-page-2" type="text" name="keywords" placeholder="Search" />
-
-
+        <input id="search-bar-fav" type="text" name="keywords" placeholder="Search" />
         <button id="search-btn-2-page" type="submit"><i class="fas fa-search"></i></button>
-
     </form>
 </div>
 
@@ -79,7 +75,7 @@
 
 
 
-{{#each blogpostsFromDB }}
+{{!-- {{#each blogpostsFromDB }}
 <section id="blog-item-in-list">
     <div id="article-head">
         <a id="title-style" href="/blogposts/{{_id}}">
@@ -111,5 +107,43 @@
    
 
 
+</section>
+{{/each}} --}}
+
+
+
+
+{{#each blogpostsFromDB }}
+<section id="blog-item-in-list">
+    <div id="article-head">
+        <a id="title-style" href="/blogposts/{{_id}}">
+            <p>{{title}}</p>
+        </a>
+        <p class="blog-description">{{description}}</p>
+        <section id="horizontal-over-content">
+            <img class="byline-author-img" src="{{user.imageUrl}}">
+            <div id="blog-author-info">
+                {{author}} <br>
+                <p>{{publishedAt}}</p>
+            </div>
+            <div id="string-of-icons">
+                <a href="https://twitter.com/intent/tweet?url=http%3A%2F%2Flocalhost%3A3000%2Fblogposts&text="
+                    target="_blank"><img class="SoMe-icons" src="/images/twitter-icon.png"></a>
+                <a href="http://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A3000%2Fblogposts&title="
+                    target="_blank"><img class="SoMe-icons" src="/images/linkdin-icon.png"></a>
+                <a href="https://www.instagram.com" target="_blank"><img class="SoMe-icons"
+                        src="/images/ig-icon.png"></a>
+                <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A3000%2Fblogposts"
+                    target="_blank"><img class="SoMe-icons" src="/images/fb-icon.png"></a>
+            </div>
+        </section>
+    </div>
+    <br>
+
+    {{!-- <div id="article-content">
+        {{{content}}}
+    </div> --}}
+
+    <br>
 </section>
 {{/each}}

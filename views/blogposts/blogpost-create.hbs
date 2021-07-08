@@ -117,6 +117,7 @@
         <textarea id="myEditor" name="content" placeholder="Put pen to paper. Here.">
         </textarea>
         <section id="horizontal_blogpost_alignment">
+            <div>
             <div id="leftside_blogpost">
                 {{!-- <label>What will you be writing today?</label>
                 <input type="text" name="typeOfBlog" /> --}}
@@ -125,7 +126,9 @@
                 <label>What's the main keywords?</label>
                 <input type="text" name="keywords" />
                 <label>Date</label>
-                <input type="text" name="publishedAt" placeholder="DD-MM-YEAR" />
+                <input type="text" name="publishedAt" placeholder="DD-MM-YYYY" />
+            </div>
+            <button id="create-blogpost-btn" type="submit">Create post</button>
             </div>
             <div id="rightside_blogpost">
                 <label>Providing a title and rubric is a science... Go ahead anyway.</label>
@@ -136,8 +139,8 @@
                 <input type="text" name="author" />
             </div>
         </section>
-        <br>
-        <button id="create-blogpost-btn" type="submit">Create post</button>
+        
+        
     </form>
 
 </div>

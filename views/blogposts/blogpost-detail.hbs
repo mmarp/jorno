@@ -74,10 +74,10 @@
         </a>
         <p class="blog-description">{{blogpostDetail.description}}</p>
         <section id="horizontal-over-content">
-            <div class="byline-author-img"></div>
+            <img class="byline-author-img" src="{{blogpostDetail.user.imageUrl}}">
             <div id="blog-author-info">
                 {{blogpostDetail.author}} <br>
-                <p>{{blogpostDetail.publishedAt}} | 5 min</p>
+                <p>{{blogpostDetail.publishedAt}} | {{timeToRead}} min </p>
             </div>
             <div id="string-of-icons">
                 <a href="https://twitter.com/intent/tweet?url=http%3A%2F%2Flocalhost%3A3000%2Fblogposts&text=" target="_blank"><img
@@ -98,12 +98,7 @@
     </div>
 
     <br>
-    <form action="/blogposts/{{blogpostDetail._id}}/delete" method="POST">
-        <div class="writer-blog-btns">
-            <button class="black-btn" type="submit">Delete</button>
-        </div>
-    </form>
-    <br>
+    
 </section>
 
 
@@ -114,17 +109,25 @@
 
 
 {{#if writter}}
+<div id="edit-delete-blogpost">
 <button class="black-btn"><a class="unstyle-link" href="/blogposts/{{blogpostDetail._id}}/edit">Edit</a></button>
+<form action="/blogposts/{{blogpostDetail._id}}/delete" method="POST">
+    <div class="writer-blog-btns">
+        <button class="black-btn" type="submit">Delete</button>
+    </div>
+</form>
+
+</div>
+
+<br>
 {{/if}}
 
-
-<hr>
 
 
 {{#if editor}}
 {{#unless bFavorite}}
 <form action="/blogposts/{{blogpostDetail._id}}" method="POST">
-    <button class="favorite-btn" type="submit"><img id="favorites-icon" src="/images/favorites-blogposts.png"
+    <button class="favorite-blogpost-btn" type="submit"><img id="favorites-icon" src="/images/favorites-blogposts.png"
             alt="favorites-blogposts-icon">
         {{!-- <i class="fas fa-folder-plus"> <i class="far fa-bookmark"></i></i> --}}
     </button>
@@ -133,10 +136,11 @@
 
 {{#if bFavorite}}
 <form action="/blogposts/favorites/{{blogpostDetail._id}}/delete" method="POST">
-    <button class="favorite-btn" type="submit"><img id="delete-icon" src="/images/delete.png"
+    <button class="favorite-blogpost-btn" type="submit"><img id="delete-icon" src="/images/delete.png"
             alt="detele-icon"></button>
 </form>
 {{/if}}
 
 {{/if}}
 
+<div id="separation-line-blogpostfav"></div>

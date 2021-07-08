@@ -63,6 +63,7 @@ function requireEditor(req, res, next) {
 
 //WRITER - SEE OWN BLOGPOSTS 
 router.get('/blogposts', requireLogin, async (req, res) => {
+    
     const blogpostsFromDB = await Blogpost.find({
         user: req.session.currentUser
     }).sort({
@@ -88,34 +89,33 @@ router.get('/blogposts/:blogpostId', requireLogin, async (req, res) => {
     //
     const userDetail = await User.findById(req.session.currentUser._id);
 
-
-    const blogpostDetail = await Blogpost.findById(req.params.blogpostId);
-
+    const blogpostDetail = await Blogpost.findById(req.params.blogpostId).populate('user');
+    const timeToRead = Math.round(blogpostDetail.content.split(' ').length / 200);
     //
     let bFavorite = false;
     for (let i = 0; i < userDetail.favoritesBlogpost.length; i++) {
-        console.log('CHECANDO!!!! ', req.params.blogpostId, userDetail.favoritesBlogpost[i]);
+
         if (userDetail.favoritesBlogpost[i] == req.params.blogpostId) {
             bFavorite = true;
-            console.log('CHECANDO BFAVEEEE ', bFavorite);
+
         }
     }
-
-
 
     if (req.session.currentUser.role === "writter") {
         const writter = true;
         res.render('blogposts/blogpost-detail', {
             blogpostDetail,
+            timeToRead,
             writter
         });
 
     } else if (req.session.currentUser.role === "editor") {
         const editor = true;
         if (bFavorite) {
-            console.log('CHECANDO SE ENTROU NO IF ')
+
             res.render('blogposts/blogpost-detail', {
                 blogpostDetail,
+                timeToRead,
                 editor,
                 bFavorite,
                 userDetail
@@ -123,13 +123,15 @@ router.get('/blogposts/:blogpostId', requireLogin, async (req, res) => {
         } else {
             res.render('blogposts/blogpost-detail', {
                 blogpostDetail,
+                timeToRead,
                 editor,
             });
         }
 
     } else {
         res.render('blogposts/blogpost-detail', {
-            blogpostDetail
+            blogpostDetail,
+            timeToRead,
         });
     }
 
@@ -226,7 +228,7 @@ router.post('/blogposts/:blogpostId/delete', async (req, res) => {
 router.get('/find-blogpost', requireEditor, requireLogin, async (req, res) => {
     const blogpostsFromDB = await Blogpost.find().sort({
         title: 1
-    });
+    }).populate('user');
     res.render('blogposts/blogpost-find', {
         blogpostsFromDB
     });
@@ -247,7 +249,7 @@ router.get('/blogpost-search', requireEditor, requireLogin, async (req, res) => 
         }
     }).sort({
         title: 1
-    });
+    }).populate('user');
     console.log(blogpostsFromDB.keywords);
     res.render('blogposts/blogpost-find', {
         blogpostsFromDB
@@ -280,7 +282,7 @@ router.get('/blogposts/:userId/favorites', requireEditor, async (req, res) => {
     const blogpostsFavorites = userDetail.favoritesBlogpost;
     let newArray = [];
     for (let i = 0; i < blogpostsFavorites.length; i++) {
-        const findBlogpost = await Blogpost.findOne(blogpostsFavorites[i]);
+        const findBlogpost = await Blogpost.findOne(blogpostsFavorites[i]).populate('user');
         newArray.push(findBlogpost);
     }
     console.log("CHECK NEW ARRAY HERE", newArray);
@@ -298,12 +300,12 @@ router.post("/blogposts/favorites/:blogpostId/delete", requireLogin, requireEdit
     const blogpostsFavorite = await Blogpost.findById(req.params.blogpostId);
 
     await User.findByIdAndUpdate(req.session.currentUser._id, {
-        
+
         $pull: {
             favoritesBlogpost: req.params.blogpostId
         }
     });
-console.log("ARE YOU?", req.params.blogpostId);
+    console.log("ARE YOU?", req.params.blogpostId);
     // const reqQuery = req.query.q;
     res.redirect(`/blogposts/${req.session.currentUser._id}/favorites`);
 });
@@ -417,10 +419,6 @@ router.post("/news/favorites/:newsId/delete", async (req, res) => {
 
 
 
-
-
-
-
 //Show favorites
 //TEST
 // router.get('/news-favorites', async (req, res) => {
@@ -452,12 +450,6 @@ router.post("/news/favorites/:newsId/delete", async (req, res) => {
 //     const newsDetails = await newsapi.v2.everything({});
 // }
 // });
-
-
-
-
-
-
 
 
 module.exports = router; //always the last line

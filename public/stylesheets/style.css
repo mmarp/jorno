@@ -77,6 +77,17 @@ a {
   margin: 2px 20px 0px;
 }
 
+.nav-link:hover {
+  font-family: "Lora";
+  font-size: 20px;
+  line-height: 26px;
+  line-height: 100px;
+  letter-spacing: -1.5%;
+  color: #18A0FB !important;
+  margin: 2px 20px 0px;
+}
+
+
 
 
 #jorno-logo {
@@ -105,9 +116,23 @@ a {
   letter-spacing: 0.2px;
 }
 
+
 .unstyle-link {
   text-decoration: none;
   color: white;
+}
+
+
+.unstyle-link:hover {
+  text-decoration: none;
+  color: white;
+}
+
+
+#separation-line-blogpostlist{
+  border-bottom: 0.5px solid #4d5156b0;
+  margin: 30px 0px 0px 100px;
+  width: 580px;
 }
 
 
@@ -172,6 +197,20 @@ a {
   background-color: #111111;
   color: #F8F8F8;
   border: 1px solid #111111;
+  border-radius: 6px;
+  width: 130px;
+  height: 40px;
+  font-size: 16px;
+  line-height: 18px;
+  line-height: 100%;
+  letter-spacing: 0.4px;
+}
+
+
+.black-btn:hover {
+  background-color: #aeaeae;
+  color: #F8F8F8;
+  border: 1px solid #aeaeae;
   border-radius: 6px;
   width: 130px;
   height: 40px;
@@ -255,6 +294,7 @@ a {
   border: none;
   color: #18A0FB;
   background-color: rgba(0, 0, 0, 0);
+  margin: 10px 0px 0px 340px;
 }
 
 
@@ -304,7 +344,7 @@ a {
   line-height: 48px;
   line-height: 120%;
   letter-spacing: 1px;
-  border: 1px solid grey;
+  /* border: 1px solid grey; */
   padding-right: 70px;
 }
 
@@ -353,7 +393,17 @@ padding: 50px 70px 0px;
   font-weight: bold;
   font-family: "Lora";
   font-size: 1rem;
-  margin-left: 70px;
+  /* margin-left: 70px; */
+}
+
+
+.news-fav a:hover {
+  text-decoration: none;
+  color: #18A0FB;
+  font-weight: bold;
+  font-family: "Lora";
+  font-size: 1rem;
+  /* margin-left: 70px; */
 }
 
 
@@ -364,14 +414,28 @@ padding: 50px 70px 0px;
 
 .news-fav {
   /* border: 1px solid orangered; */
-  margin: 10px 0px;
+  margin: 10px 0px 0px 70px;
+  width: 500px;
 }
+
 
 #h1-news-fav-div {
   /* border: 1px solid blue; */
   margin-left: 70px;
   margin-bottom: 30px;
 }
+
+
+
+
+#separation-line-fav{
+border-bottom: 0.5px solid #4d5156b0;
+margin: 20px 0px 0px 0px;
+width: 500px;
+}
+
+
+
 
 
 /* SIGNUP */
@@ -811,6 +875,7 @@ padding-top: 10px;
   width: 500px;
   display: flex;
   justify-content: space-between;
+  margin-top: 30px;
 }
 
 
@@ -858,29 +923,52 @@ padding-top: 10px;
   color: #F8F8F8;
   border: 1px solid #111111;
   border-radius: 6px;
-  width: 160px;
+  width: 130px;
   height: 40px;
   font-size: 16px;
   line-height: 18px;
   line-height: 100%;
   letter-spacing: 0.4px;
-  /* margin-top: ; */
+  margin: 35px 0px 20px 0px; 
+  font-family: Helvetica;
 }
+
+#create-blogpost-btn:hover {
+  background-color: #aeaeae;
+  color: #F8F8F8;
+  border: 1px solid #aeaeae;
+  border-radius: 6px;
+  width: 130px;
+  height: 40px;
+  font-size: 16px;
+  line-height: 18px;
+  line-height: 100%;
+  letter-spacing: 0.4px;
+  margin: 35px 0px 20px 0px;
+  font-family: Helvetica;
+}
+
+
+
+
+
+
 
 
 /* BLOGPOST LIST - WORK IN PROGRESS*/
 #blog-item-in-list {
-  margin-top: 100px;
+  margin-top: 20px;
   margin-left: 200px;
 }
 
 
 #article-head {
   width: 600px;
-  margin-top: 30px;
+  margin-top: 10px;
   margin-left: 100px;
   font-family: "Lora";
   font-size: 40px;
+  
 }
 
 
@@ -941,7 +1029,7 @@ padding-top: 10px;
   width: 600px;
   margin-left: 100px;
   font-family: "Lora";
-  font-size: 17px;
+  font-size: 14px;
 }
 
 
@@ -949,6 +1037,75 @@ padding-top: 10px;
   color: black;
   font-weight: bold;
   text-decoration: none;
+}
+
+
+#title-style:hover {
+  color: #18A0FB;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+
+#edit-delete-blogpost{
+  /* border: 1px solid red; */
+  display: flex;
+  justify-content: space-between;
+  width: 575px;
+  margin-left: 300px;
+  
+}
+
+
+
+
+
+
+
+/* BLOGPOST FIND */
+#blogpost-search-div {
+  margin: 20px 0px -50px;
+  display: flex;
+  /* border: 1px solid orange; */
+  justify-content: flex-start;
+  align-items: center;
+  padding-left: 300px;
+}
+
+#search-bar-fav{
+  background-color: #FFFFFF;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  border-radius: 3px;
+  width: 530px;
+  height: 40px;
+  text-align: center;
+}
+
+
+.favorite-blogpost-btn {
+  font-size: 20px;
+  border: none;
+  color: #18A0FB;
+  background-color: rgba(0, 0, 0, 0);
+  margin-left: 285px;
+}
+
+
+#separation-line-blogpostfav {
+  border-bottom: 0.5px solid #989898b0;
+  margin: 20px 0px 40px 290px;
+  width: 600px;
+}
+
+
+.h1-blogposts-archive{
+  border: 1px solid green;
+  padding: 50px 0px 0px 300px;
+}
+
+#blogpost-fav-icon {
+  height: 220px;
+  padding: 50px 0px 0px 300px;
 }
 
 
@@ -960,8 +1117,6 @@ BLOGPOST EDIT TEXT GOES HERE WITH LOTS OF GREEN TO SIGNAL NEW AREA */
 
 
 /* LANDING PAGE */
-
-
 
 #horizontal-landing-header-logo {
   display: flex;

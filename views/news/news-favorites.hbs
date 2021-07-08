@@ -55,12 +55,12 @@
 
 <div id="news-search-background">
     <img id="news-fav-icon" src="/images/profile-news-icon.png" alt="news-fav-icon">
-    <div id="h1-news-fav-div">
+    {{!-- <div id="h1-news-fav-div">
 
         <h1>News archive</h1>
 
-    </div>
-
+    </div> --}}
+<br>
 
     {{#each newsFavorites}}
     <div class="news-fav">
@@ -71,10 +71,14 @@
         <a href="{{url}}" target="_blank">
             {{title}}
         </a>
+
+        <div id="separation-line-fav"></div>
+
         <form action="/news/favorites/{{_id}}/delete" method="POST">
             <button class="favorite-btn" type="submit"><img id="delete-icon" src="/images/delete.png"
                     alt="detele-icon"></button>
         </form>
+        <br>
         <br>
 
 

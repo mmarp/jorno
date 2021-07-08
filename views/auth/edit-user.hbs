@@ -65,12 +65,12 @@
         <span>{{userToEdit.email}}</span>
     </div>
 
-    <div>
+    {{!-- <div>
         <span class="span-bold">Role</span>
         <span>{{userToEdit.role}}</span>
     </div>
+    <br> --}}
     <br>
-
     <form action="/auth/{{userToEdit._id}}/edit" method="post" enctype="multipart/form-data">
 
         <label for="">Location</label>
@@ -78,14 +78,17 @@
         <input class="input-edit" type="text" name="location" value="{{userToEdit.location}}">
 
         <br>
-        <label for="">Bio</label>
-        <br>
-        <input class="input-edit" type="text" name="bio" value="{{userToEdit.bio}}">
-
-        {{!-- <br>
         <label for="">Interests</label>
         <br>
-        <input class="input-edit" type="text" name="bio" value="{{userToEdit.bio}}"> --}}
+        <input class="input-edit" type="text" name="bio" value="{{userToEdit.interests}}">
+
+
+        <br>
+        <label for="">Bio</label>
+        <br>
+        <textarea id="text-area-signup" row="20" cols="100" name="bio">{{userToEdit.bio}}</textarea>
+
+
 
         <br>
         {{!-- <label for="">Image</label> --}}

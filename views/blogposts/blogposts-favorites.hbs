@@ -49,20 +49,27 @@
 
 
 
-<h1>Blogposts favorites</h1>
-<div id="news-search-div">
+{{!-- <h1 class="h1-blogposts-archive">Blogposts Archive</h1> --}}
+<img id="blogpost-fav-icon" src="/images/profile-blogposts-icon.png" alt="profile-blogposts-icon">
+{{!-- <div id="news-search-div">
+    <form action="/blogpost-search" method="GET"> --}}
+        {{!-- enctype multipart lets me insert images --}}
+        {{!-- <label></label>
+        <input id="search-bar-page-2" type="text" name="keywords" placeholder="Search" />
+        <button id="search-btn-2-page" type="submit"><i class="fas fa-search"></i></button>
+    </form>
+</div> --}}
+
+
+
+<div id="blogpost-search-div">
     <form action="/blogpost-search" method="GET">
         {{!-- enctype multipart lets me insert images --}}
-
         <label></label>
-        <input id="search-bar-page-2" type="text" name="keywords" placeholder="Search" />
-
-
+        <input id="search-bar-fav" type="text" name="keywords" placeholder="Search" />
         <button id="search-btn-2-page" type="submit"><i class="fas fa-search"></i></button>
-
     </form>
 </div>
-
 
 
 
@@ -78,17 +85,18 @@
         </a>
         <p class="blog-description">{{description}}</p>
         <section id="horizontal-over-content">
-            <div class="byline-author-img"></div>
+            <img class="byline-author-img" src="{{user.imageUrl}}">
             <div id="blog-author-info">
                 {{author}}
-                {{publishedAt}}<p> | 5 min</p>
+                <p> {{publishedAt}}</p>
             </div>
             <div id="string-of-icons">
-                <a href="https://twitter.com/intent/tweet?url=http%3A%2F%2Flocalhost%3A3000%2Fblogposts&text=" target="_blank"><img
-                        class="SoMe-icons" src="/images/twitter-icon.png"></a>
+                <a href="https://twitter.com/intent/tweet?url=http%3A%2F%2Flocalhost%3A3000%2Fblogposts&text="
+                    target="_blank"><img class="SoMe-icons" src="/images/twitter-icon.png"></a>
                 <a href="http://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A3000%2Fblogposts&title="
                     target="_blank"><img class="SoMe-icons" src="/images/linkdin-icon.png"></a>
-                <a href="https://www.instagram.com" target="_blank"><img class="SoMe-icons" src="/images/ig-icon.png"></a>
+                <a href="https://www.instagram.com" target="_blank"><img class="SoMe-icons"
+                        src="/images/ig-icon.png"></a>
                 <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A3000%2Fblogposts"
                     target="_blank"><img class="SoMe-icons" src="/images/fb-icon.png"></a>
             </div>
