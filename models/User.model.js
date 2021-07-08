@@ -20,7 +20,7 @@ const userSchema = new Schema({
   role: String, //Writter or Editor
   imageUrl: String,
   location: String,
-  interests: Array,
+  interests: String,
   bio: String,
 
   //TEST

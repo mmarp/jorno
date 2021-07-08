@@ -88,12 +88,17 @@
         <input class="input-edit" type="text" name="bio" value="{{userToEdit.bio}}"> --}}
 
         <br>
-        <label for="">Image</label>
-        <br>
-        <input type="file" name="image">
-        <br>
-        <br>
-        <button class="black-btn" type="submit"> update </button>
+        {{!-- <label for="">Image</label> --}}
+        {{!-- <br> --}}
+        <div id="profile-update-div" class="file-input">
+            <input type="file" id="file" class="file img-input" name="image">
+            <label for="file">Profile Picture</label>
+            <button class="black-btn" type="submit"> Update </button>
+        </div>
+        {{!-- <input type="file" name="image"> --}}
+        {{!-- <br>
+        <br> --}}
+        {{!-- <button class="black-btn" type="submit"> update </button> --}}
     </form>
 
 </div>

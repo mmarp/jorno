@@ -60,7 +60,15 @@
             <br>
             <input class="input-login" type="password" name="password" placeholder="Password" />
             <br>
-            <button id="login-btn-page" class="black-btn" type="submit">Login</button>
+
+            <div class="register-error-div">
+                <button id="login-btn-page" class="black-btn" type="submit">Login</button>
+
+                {{#if errorMessage}}
+                <p class="error-message">{{errorMessage}}</p>
+                {{/if}}
+            </div>
+
         </form>
 
     </div>
@@ -75,9 +83,9 @@
 
 </div>
 
-{{#if errorMessage}}
+{{!-- {{#if errorMessage}}
 <p>{{errorMessage}}</p>
-{{/if}}
+{{/if}} --}}
 
 <footer>
     <div id="endpage-jorno-logo">

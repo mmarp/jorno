@@ -79,11 +79,30 @@
             <br>
 
             {{!-- <label>Profile Picture</label> --}}
-            <input class="img-input" type="file" name="image" />
+            {{!-- <input class="img-input" type="file" name="image" /> --}}
+
+
+
+            {{!-- <div class="file-input">
+                <input type="file" id="file" class="file img-input" name="image">
+                <label for="file">Profile Picture</label>
+            </div> --}}
+
+
+
+
             <br>
 
             <div id="div-signup-btns">
-                <button id="register-btn" class="black-btn" type="submit">Register</button>
+
+                <div class="file-input">
+                    <input type="file" id="file" class="file img-input" name="image">
+                    <label for="file">Profile Picture</label>
+                </div>
+
+
+
+                {{!-- <button id="register-btn" class="black-btn" type="submit">Register</button> --}}
                 <div>
                     <div class="radio-btn">
                         Writer <input type="radio" name="role" value="writter" checked="true">
@@ -95,7 +114,18 @@
                 </div>
             </div>
 
+
+            <div class="register-error-div">
+
+                {{!-- TEST --}}
+                <button id="register-btn" class="black-btn" type="submit">Register</button>
+                {{#if errorMessage}}
+                <p class="error-message">{{errorMessage}}</p>
+                {{/if}}
+            </div>
         </form>
+
+
 
     </div>
 
@@ -110,9 +140,7 @@
 
 
 
-    {{#if errorMessage}}
-    <p>{{errorMessage}}</p>
-    {{/if}}
+
 
 
 
