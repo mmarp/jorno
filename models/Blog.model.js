@@ -4,7 +4,7 @@ const {
 } = require('mongoose');
 
 
-const BlogPostsSchema = new Schema({
+const BlogSchema = new Schema({
     author: String,
     title: String,
     description: String,
@@ -21,4 +21,4 @@ const BlogPostsSchema = new Schema({
 
 
 
-module.exports = model('Blogposts', BlogPostsSchema);
+module.exports = model('Blog', BlogSchema);

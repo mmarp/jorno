@@ -7,7 +7,7 @@ const User = require('../models/User.model');
 
 
 //Require blogposts
-const Blogpost = require('../models/Blogposts.model');
+const Blogpost = require('../models/Blog.model');
 
 
 const fileUpload = require('../config/cloudinary');
