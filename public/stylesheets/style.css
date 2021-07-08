@@ -967,9 +967,10 @@ padding-top: 10px;
   margin-top: 10px;
   margin-left: 100px;
   font-family: "Lora";
-  font-size: 40px;
-  
+  font-size: 30px;
 }
+
+
 
 
 #horizontal-over-content {
@@ -1064,7 +1065,16 @@ padding-top: 10px;
 
 /* BLOGPOST FIND */
 #blogpost-search-div {
-  margin: 20px 0px -50px;
+  margin: 50px 0px 10px;
+  display: flex;
+  /* border: 1px solid orange; */
+  justify-content: flex-start;
+  align-items: center;
+  padding-left: 300px;
+}
+
+#blogpost-search-fav-div {
+  margin: 10px 0px 50px;
   display: flex;
   /* border: 1px solid orange; */
   justify-content: flex-start;
@@ -1138,10 +1148,10 @@ BLOGPOST EDIT TEXT GOES HERE WITH LOTS OF GREEN TO SIGNAL NEW AREA */
 
 
 #landing-page-logo {
-  width: 150px;
-  height: 150px;
+  /* width: 150px; */
+  height: 180px;
   margin-left: 25px;
-  margin-top: 40px;
+  margin-top: 30px;
 }
 
 

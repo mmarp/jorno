@@ -30,7 +30,7 @@ const userSchema = new Schema({
   }],
   favoritesBlogpost: [{
     type: Schema.Types.ObjectId, //reference to the author schema
-    ref: 'Blogpost',
+    ref: 'Blog',
   }]
 });
 

@@ -79,7 +79,9 @@
         <br>
         <label>Bio</label>
         <br>
-        <textarea id="text-area-edit" row="20" cols="100" name="bio">{{userToEdit.bio}}</textarea>
+
+        <input class="input-edit" type="text" name="bio" value="{{userToEdit.bio}}" />
+        {{!-- <textarea id="text-area-edit" row="20" cols="100" name="bio">{{userToEdit.bio}}</textarea> --}}
 
 
         {{!-- IMAGE TO EDIT --}}
@@ -87,7 +89,7 @@
         <input class="input-edit" type="file" name="image">
 
 
-        
+
         {{!-- <label>Bio</label>
         <input type="text" name="bio" value="{{userToEdit.bio}}" /> --}}
         <br>

@@ -251,27 +251,27 @@ router.get('/auth/:userId/edit', requireLogin, async (req, res) => {
 
 
 //PREVIOUS WORKING CODE
-router.get('/auth/:userId/edit', requireLogin, async (req, res) => {
-    const userToEdit = await User.findById(req.params.userId);
-    console.log(userToEdit);
-    if (req.session.currentUser.role === "writter") {
-        const writter = true;
-        res.render('auth/user-edit', {
-            userToEdit,
-            writter
-        });
-    } else if (req.session.currentUser.role === "editor") {
-        const editor = true;
-        res.render('auth/user-edit', {
-            userToEdit,
-            editor
-        });
-    } else {
-        res.render('auth/user-edit', {
-            userToEdit,
-        });
-    }
-});
+// router.get('/auth/:userId/edit', requireLogin, async (req, res) => {
+//     const userToEdit = await User.findById(req.params.userId);
+//     console.log(userToEdit);
+//     if (req.session.currentUser.role === "writter") {
+//         const writter = true;
+//         res.render('auth/user-edit', {
+//             userToEdit,
+//             writter
+//         });
+//     } else if (req.session.currentUser.role === "editor") {
+//         const editor = true;
+//         res.render('auth/user-edit', {
+//             userToEdit,
+//             editor
+//         });
+//     } else {
+//         res.render('auth/user-edit', {
+//             userToEdit,
+//         });
+//     }
+// });
 
 
 
@@ -295,23 +295,26 @@ router.get('/auth/:userId/edit', requireLogin, async (req, res) => {
 
 //IMAGE BEN CODE
 router.post('/auth/:userId/edit', fileUpload.single('image'), async (req, res) => {
-
     const userID = req.params.userId;
     const {
         location,
+        interests,
         bio,
     } = req.body;
     console.log(req.body);
     if (req.file) {
         await User.findByIdAndUpdate(userID, {
             location,
+            interests,
             bio,
             imageUrl: req.file.path
         });
     } else {
         await User.findByIdAndUpdate(userID, {
             location,
+            interests,
             bio,
+            
         });
     }
     res.redirect(`/auth/${userID}`);
