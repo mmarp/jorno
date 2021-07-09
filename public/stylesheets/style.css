@@ -117,6 +117,21 @@ a {
 }
 
 
+#logout-btn:hover {
+  margin: 40px 50px;
+  background-color: white;
+  color: #9dafbb;
+  border: 1px solid #9dafbb;
+  border-radius: 6px;
+  width: 130px;
+  height: 40px;
+  font-size: 15px;
+  line-height: 18px;
+  line-height: 100%;
+  letter-spacing: 0.2px;
+}
+
+
 .unstyle-link {
   text-decoration: none;
   color: white;
@@ -479,6 +494,31 @@ width: 500px;
   color: #18A0FB;
 }
 
+#login-btn:hover {
+  margin: 40px 50px;
+  background-color: white;
+  color: #9dafbb;
+  border: 1px solid #9dafbb;
+  border-radius: 6px;
+  width: 130px;
+  height: 40px;
+  font-size: 15px;
+  line-height: 18px;
+  line-height: 100%;
+  letter-spacing: 0.2px;
+  padding: 1px 6px;
+}
+
+
+#login-btn a:hover {
+  text-decoration: none;
+  color: #9dafbb;
+}
+
+
+
+
+
 
 #signup-btn {
   margin: 40px 0px;
@@ -500,6 +540,33 @@ width: 500px;
   text-decoration: none;
   color: white;
 }
+
+
+#signup-btn:hover {
+  margin: 40px 0px;
+  background-color: #9dafbb;
+  color: white;
+  border: 1px solid #9dafbb;
+  border-radius: 6px;
+  width: 130px;
+  height: 40px;
+  font-size: 15px;
+  line-height: 18px;
+  line-height: 100%;
+  letter-spacing: 0.2px;
+  padding: 1px 6px;
+}
+
+
+#signup-btn a:hover {
+  text-decoration: none;
+  color: white;
+}
+
+
+
+
+
 
 
 #h1-singup,
