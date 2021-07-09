@@ -76,19 +76,43 @@
         <section id="horizontal-over-content">
             <img class="byline-author-img" src="{{blogpostDetail.user.imageUrl}}">
             <div id="blog-author-info">
-                {{blogpostDetail.author}} <br>
+                <b> {{blogpostDetail.author}} </b>
                 <p>{{blogpostDetail.publishedAt}} | {{timeToRead}} min </p>
             </div>
+
             <div id="string-of-icons">
-                <a href="https://twitter.com/intent/tweet?url=http%3A%2F%2Flocalhost%3A3000%2Fblogposts&text=" target="_blank"><img
-                        class="SoMe-icons" src="/images/twitter-icon.png"></a>
-                <a href="http://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A3000%2Fblogposts&title=" target="_blank"><img
-                        class="SoMe-icons" src="/images/linkdin-icon.png"></a>
-                <a href="https://www.instagram.com" target="_blank"><img class="SoMe-icons" src="/images/ig-icon.png"></a>
-                <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A3000%2Fblogposts" target="_blank"><img
-                        class="SoMe-icons" src="/images/fb-icon.png"></a>
+                <a href="https://twitter.com/intent/tweet?url=http%3A%2F%2Flocalhost%3A3000%2Fblogposts&text="
+                    target="_blank"><img class="SoMe-icons" src="/images/twitter-icon.png"></a>
+                <a href="http://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A3000%2Fblogposts&title="
+                    target="_blank"><img class="SoMe-icons" src="/images/linkdin-icon.png"></a>
+                <a href="https://www.instagram.com" target="_blank"><img class="SoMe-icons"
+                        src="/images/ig-icon.png"></a>
+                <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A3000%2Fblogposts"
+                    target="_blank"><img class="SoMe-icons" src="/images/fb-icon.png"></a>
             </div>
         </section>
+
+
+
+        {{!-- BEN LIKE RESERVE --}}
+
+        <div id="div-with-handlebars-over-content">
+            <img id="dynamic-icons-heart" src="/images/like-icon.png"><span
+                class="like-reserve-horizontal">{{blogpostDetail.like.length}} |</span> <img id="dynamic-icons-reserve"
+                src="/images/jorno-icon-black.png">
+            <span class="like-reserve-horizontal">
+                {{#each blogpostDetail.reserve}}
+                {{this.user.username}}
+                {{else}}
+                {{blogpostDetail.reserve.user.username}} </span>
+            {{/each}}
+        </div>
+
+
+        {{!-- UNTIL HERE --}}
+
+
+
     </div>
     <br>
     <div id="article-content">
@@ -98,24 +122,126 @@
     </div>
 
     <br>
-    
+
 </section>
 
 
 
+{{!-- BEN INPUT WITH LIKE AND RESERVE --}}
+<section class="lower-dynamic-btn-horizontal">
+    <form action="/site/{{blogpostDetail._id}}/like" method="POST">
+        <button class="like-btn" type="submit"> <img id="dynamic-icons-heart" src="/images/like-icon.png">
+            {{blogpostDetail.like.length}}</button>
+    </form>
 
 
 
 
+    {{#if editor}}
+    {{#unless bFavorite}}
+    <form action="/blogposts/{{blogpostDetail._id}}" method="POST">
+        <button class="favorite-blogpost-btn" type="submit"><img id="favorites-icon"
+                src="/images/favorites-blogposts.png" alt="favorites-blogposts-icon"> Save
+            {{!-- <i class="fas fa-folder-plus"> <i class="far fa-bookmark"></i></i> --}}
+        </button>
+    </form>
+
+
+    
+    {{/unless}}
+
+
+    {{#if bFavorite}}
+    <form action="/blogposts/favorites/{{blogpostDetail._id}}/delete" method="POST">
+        <button class="favorite-blogpost-btn" type="submit"><img id="delete-icon" src="/images/delete.png"
+                alt="detele-icon">Unsave</button>
+    </form>
+    {{/if}}
+
+    {{/if}}
+
+
+
+
+
+
+
+
+    
+
+
+
+    {{#if editor}}
+    {{#each blogpostDetail.reserve}}
+    {{!-- <span class="reserve-btn">{{this.user.username}}</span> --}}
+    {{else}}
+    <form action="/site/{{blogpostDetail._id}}/reserve" method="POST"><button class="reserve-btn" type="submit">
+            <img id="dynamic-icons-reserve" src="/images/jorno-icon-black.png"> Request blogpost </button>
+    </form>
+    {{/each}}
+    {{/if}}
+
+
+
+</section>
+<br>
+<br>
+
+{{!-- BLACK WRITER-BUTTONS --}}
 
 {{#if writter}}
 <div id="edit-delete-blogpost">
-<button class="black-btn"><a class="unstyle-link" href="/blogposts/{{blogpostDetail._id}}/edit">Edit</a></button>
-<form action="/blogposts/{{blogpostDetail._id}}/delete" method="POST">
-    <div class="writer-blog-btns">
-        <button class="black-btn" type="submit">Delete</button>
-    </div>
-</form>
+    <button class="black-btn"><a class="unstyle-link" href="/blogposts/{{blogpostDetail._id}}/edit">Edit</a></button>
+    <form action="/blogposts/{{blogpostDetail._id}}/delete" method="POST">
+        <div class="writer-blog-btns">
+            <button class="black-btn" type="submit">Delete</button>
+        </div>
+    </form>
+
+</div>
+
+<br>
+{{/if}}
+
+
+{{!-- TILL HERE --}}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{{!-- PREVIOUS WORKING CODE --}}
+
+{{!-- {{#if writter}}
+<div id="edit-delete-blogpost">
+    <button class="black-btn"><a class="unstyle-link" href="/blogposts/{{blogpostDetail._id}}/edit">Edit</a></button>
+    <form action="/blogposts/{{blogpostDetail._id}}/delete" method="POST">
+        <div class="writer-blog-btns">
+            <button class="black-btn" type="submit">Delete</button>
+        </div>
+    </form>
 
 </div>
 
@@ -128,9 +254,9 @@
 {{#unless bFavorite}}
 <form action="/blogposts/{{blogpostDetail._id}}" method="POST">
     <button class="favorite-blogpost-btn" type="submit"><img id="favorites-icon" src="/images/favorites-blogposts.png"
-            alt="favorites-blogposts-icon">
+            alt="favorites-blogposts-icon"> --}}
         {{!-- <i class="fas fa-folder-plus"> <i class="far fa-bookmark"></i></i> --}}
-    </button>
+        {{!-- </button>
 </form>
 {{/unless}}
 
@@ -141,6 +267,6 @@
 </form>
 {{/if}}
 
-{{/if}}
+{{/if}} --}}
 
 <div id="separation-line-blogpostfav"></div>

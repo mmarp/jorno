@@ -31,7 +31,11 @@ const userSchema = new Schema({
   favoritesBlogpost: [{
     type: Schema.Types.ObjectId, //reference to the author schema
     ref: 'Blog',
-  }]
+  }],
+   reserve: [{
+     type: Schema.Types.ObjectId,
+     ref: 'Reserve' // relates to the Reserve model
+   }],
 });
 
 

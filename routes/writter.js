@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
-
+const Like = require('../models/Like.model');
+const Reserve = require('../models/Reserve.model');
 
 //Require User
 const User = require('../models/User.model');
@@ -63,7 +64,7 @@ function requireEditor(req, res, next) {
 
 //WRITER - SEE OWN BLOGPOSTS 
 router.get('/blogposts', requireLogin, async (req, res) => {
-    
+
     const blogpostsFromDB = await Blogpost.find({
         user: req.session.currentUser
     }).sort({
@@ -89,7 +90,22 @@ router.get('/blogposts/:blogpostId', requireLogin, async (req, res) => {
     //
     const userDetail = await User.findById(req.session.currentUser._id);
 
-    const blogpostDetail = await Blogpost.findById(req.params.blogpostId).populate('user');
+    
+    //PREVIOUS WORKING CODE 
+    // const blogpostDetail = await Blogpost.findById(req.params.blogpostId).populate('user');
+
+
+    //BEN ⤵️ Adding the deep population method to get the user (editor) that has reserved a given blog post, added to...
+    //...the blogpostDetail variable here, and used after the code block that executes likes below. 
+    const blogpostDetail = await Blogpost.findById(req.params.blogpostId).populate('user').populate('like').populate({
+        path: 'reserve',
+        populate: {
+            path: 'user'
+        }
+    });
+
+
+    //Implementing time to read functionality
     const timeToRead = Math.round(blogpostDetail.content.split(' ').length / 200);
     //
     let bFavorite = false;
@@ -144,6 +160,73 @@ router.get('/blogposts/:blogpostId', requireLogin, async (req, res) => {
 //     const blogpostDetail = await Blogpost.findById(req.params.blogpostId);
 //     res.render('blogposts/blogpost-detail', blogpostDetail);
 // });
+
+
+
+
+
+
+
+//BEN ⤵️ recieving likes for the blogpost and checking for likes by users
+router.post("/site/:blogpostId/like", async (req, res) => { //post from <form> on site-detail.hbs
+    // try {
+    const user = await User.findById(req.session.currentUser._id); //Get the current user
+    const blog = await Blogpost.findById(req.params.blogpostId); //Get the current blogpost
+
+    const existingLike = await Like.findOne({ //Look for an existing like
+        user: user, //Look on the user
+        blog: blog //Look on the blogpost
+    });
+
+    if (!existingLike) {
+        const like = await Like.create({
+            user,
+            blog
+        });
+
+        await Blogpost.findByIdAndUpdate(req.params.blogpostId, { //push like to the specific blogpost
+            $push: {
+                like: like,
+            }
+        })
+    }
+
+    res.redirect(`/blogposts/${req.params.blogpostId}`); //NB: A redirect like this in the end of a .post route needs..
+    //...to end on the {} ... in this case on the direction to the post. We CAN NOT use :blogpost as a parameter in this case.
+});
+
+//RECIEVE RESERVATIONS FROM USERS WANTING TO USE THE BLOGPOST ⤵️
+router.post("/site/:blogpostId/reserve", async (req, res) => { //post from <form> on site-detail.hbs
+    // try {
+    const user = await User.findById(req.session.currentUser._id); //Get the current user
+    const blog = await Blogpost.findById(req.params.blogpostId); //Get the current blogpost
+
+    const existingReserve = await Reserve.findOne({ //Look for an existing like
+        user: user, //Look on the user
+        blog: blog, //Look on the blogpost
+    });
+
+    if (!existingReserve) {
+        const reserve = await Reserve.create({
+            user,
+            blog,
+        });
+        await Blogpost.findByIdAndUpdate(req.params.blogpostId, { //push like to the specific blogpost
+            $push: {
+                reserve: reserve
+            }
+        })
+    }
+    //aka. find all the reserves where the blogpost is equal to this ID
+    // res.render("books/site-detail", {blogPostDetail, reserveArr});                     //...no need for {}, blogPostDetail is already an object                  
+    res.redirect(`/blogposts/${req.params.blogpostId}`);
+});
+
+
+
+
+
+
 
 
 

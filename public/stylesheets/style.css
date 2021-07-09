@@ -39,8 +39,8 @@ footer {
 }
 
 
-.error-message{
-  color:#004574;
+.error-message {
+  color: #004574;
   font-family: "Lora";
   font-style: italic;
   font-weight: bold;
@@ -144,7 +144,7 @@ a {
 }
 
 
-#separation-line-blogpostlist{
+#separation-line-blogpostlist {
   border-bottom: 0.5px solid #4d5156b0;
   margin: 30px 0px 0px 100px;
   width: 580px;
@@ -395,9 +395,9 @@ a {
 }
 
 
-#news-fav-icon{
-height: 150px;
-padding: 50px 70px 0px;
+#news-fav-icon {
+  height: 150px;
+  padding: 50px 70px 0px;
 }
 
 
@@ -443,10 +443,10 @@ padding: 50px 70px 0px;
 
 
 
-#separation-line-fav{
-border-bottom: 0.5px solid #4d5156b0;
-margin: 20px 0px 0px 0px;
-width: 500px;
+#separation-line-fav {
+  border-bottom: 0.5px solid #4d5156b0;
+  margin: 20px 0px 0px 0px;
+  width: 500px;
 }
 
 
@@ -628,7 +628,7 @@ width: 500px;
 }
 
 
-#register-btn{
+#register-btn {
   margin: 10px 0px 30px;
   z-index: 99999999;
 }
@@ -680,11 +680,6 @@ input[type='radio']:checked:after {
 
 
 
-
-
-
-
-
 #endpage-jorno-logo {
   /* border: 1px solid hotpink; */
   display: flex;
@@ -725,7 +720,7 @@ width: 500px;
   transition: transform .2s ease-out;
 } */
 
-.file-input label{
+.file-input label {
   display: block;
   position: relative;
   display: flex;
@@ -747,14 +742,14 @@ width: 500px;
 
 
 
-.register-error-div{
-/* border: 1px solid orange; */
-width: 500px;
-height: 60px;
-display: flex;
-justify-content: space-between;
-align-items: center;
-padding-top: 10px;
+.register-error-div {
+  /* border: 1px solid orange; */
+  width: 500px;
+  height: 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 10px;
 }
 
 
@@ -921,8 +916,8 @@ padding-top: 10px;
 /* PREVIOUS STYLING PROFILE ICON */
 /* #edit-profile-icon,
 #profile-icon { */
-  /* border: 1px solid red; */
-  /* height: 100px;
+/* border: 1px solid red; */
+/* height: 100px;
 } */
 
 #edit-profile-icon,
@@ -938,7 +933,7 @@ padding-top: 10px;
 
 
 
-#profile-update-div{
+#profile-update-div {
   width: 500px;
   display: flex;
   justify-content: space-between;
@@ -996,7 +991,7 @@ padding-top: 10px;
   line-height: 18px;
   line-height: 100%;
   letter-spacing: 0.4px;
-  margin: 35px 0px 20px 0px; 
+  margin: 35px 0px 20px 0px;
   font-family: Helvetica;
 }
 
@@ -1044,7 +1039,41 @@ padding-top: 10px;
   display: flex;
   flex-direction: row;
   align-items: flex-start;
+  /* N */
+  height: 50px;
 }
+
+
+/* BEN */
+#div-with-handlebars-over-content {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-top: 5px;
+  width: 500px;
+  margin-left: 60px;
+  margin-right: 200px;
+}
+
+#dynamic-icons-heart {
+  height: 30px;
+  padding-right: 1px;
+}
+
+#dynamic-icons-reserve {
+  height: 25px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+.like-reserve-horizontal {
+  font-size: 15px;
+  font-family: "Lato";
+  color: darkgrey;
+}
+
+
+/* TILL HERE */
 
 
 .blog-description {
@@ -1115,17 +1144,52 @@ padding-top: 10px;
 }
 
 
-#edit-delete-blogpost{
+#edit-delete-blogpost {
   /* border: 1px solid red; */
   display: flex;
   justify-content: space-between;
   width: 575px;
   margin-left: 300px;
-  
+
 }
 
 
+/* BEN */
 
+.like-btn {
+  margin-top: 0px;
+  margin-bottom: 5px;
+  height: 40px;
+  width: 70px;
+  padding-right: 15px;
+  border-radius: 20px;
+  border: none;
+}
+
+.reserve-btn {
+  margin-top: 0px;
+  margin-bottom: 30px;
+  height: 40px;
+  width: 200px;
+  padding-right: 30px;
+  border-radius: 20px;
+  border: none;
+  
+}
+
+.favorite-blogpost-btn {
+  margin-top: 0px;
+  margin-bottom: 30px;
+  height: 40px;
+  width: 150px;
+  padding-right: 30px;
+  border-radius: 20px;
+  border: none;
+  margin-left: 15px;
+  margin-right: 15px;
+}
+
+/* TILL HERE */
 
 
 
@@ -1149,7 +1213,7 @@ padding-top: 10px;
   padding-left: 300px;
 }
 
-#search-bar-fav{
+#search-bar-fav {
   background-color: #FFFFFF;
   border: 1px solid rgba(0, 0, 0, 0.3);
   border-radius: 3px;
@@ -1159,13 +1223,35 @@ padding-top: 10px;
 }
 
 
-.favorite-blogpost-btn {
+/* .favorite-blogpost-btn {
   font-size: 20px;
   border: none;
   color: #18A0FB;
   background-color: rgba(0, 0, 0, 0);
   margin-left: 285px;
+} */
+
+
+
+
+
+/* BEN */
+.lower-dynamic-btn-horizontal {
+  display: flex;
+  flex-direction: row;
+  width: 400px;
+  height: 35px;
+  margin-top: -30px;
+  margin-left: 300px;
+  /* justify-content: space-between; */
+  
+  align-content: center;
 }
+/* TILL HERE */
+
+
+
+
 
 
 #separation-line-blogpostfav {
@@ -1175,8 +1261,8 @@ padding-top: 10px;
 }
 
 
-.h1-blogposts-archive{
-  border: 1px solid green;
+.h1-blogposts-archive {
+  /* border: 1px solid green; */
   padding: 50px 0px 0px 300px;
 }
 

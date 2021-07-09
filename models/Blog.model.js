@@ -14,7 +14,15 @@ const BlogSchema = new Schema({
     user: {
         type: Schema.Types.ObjectId,
         ref: "User",
-    }
+    },
+    like: [{
+            type: Schema.Types.ObjectId,
+            ref: 'Like' // relates to the Like model
+        }],
+        reserve: [{
+            type: Schema.Types.ObjectId,
+            ref: 'Reserve' // relates to the Like model
+        }],
 }, {
     timestamps: true,
 });
